@@ -13,7 +13,6 @@ export default function Footer() {
   return (
     <footer className="bg-black text-white border-t border-gray-800">
       <div className="container mx-auto px-6 sm:px-10 lg:px-20 py-12 lg:py-16">
-        {/* Main Footer Content */}
 
         <div className="w-44 h-44 relative shrink-0">
           <Image
@@ -98,7 +97,6 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Contact Us Section */}
           <div className="space-y-3">
             <h3 className="text-base font-semibold mb-3">Contact us</h3>
             <div className="space-y-4">
@@ -117,7 +115,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Social Media Icons */}
           <div className="flex lg:justify-end items-start">
             <div className="flex gap-4">
               <a
@@ -172,7 +169,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section */}
         <div className="mt-12 lg:mt-16 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-sm text-gray-400">
             <p>© 2023 — Copyright</p>
@@ -184,7 +180,6 @@ export default function Footer() {
             </Link>
           </div>
 
-          {/* Back to Top Button */}
           <button
             onClick={scrollToTop}
             className="w-12 h-12 flex items-center justify-center rounded-full bg-white text-black hover:bg-gray-200 transition-colors"
