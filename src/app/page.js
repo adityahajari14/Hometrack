@@ -4,6 +4,8 @@ import Navbar from "@/components/navbar";
 import ServiceCard from "@/components/service-card";
 import Button from "@/components/button";
 import TestimonialCard from "@/components/testimonial-card";
+import ContactCard from "@/components/contact";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -166,12 +168,12 @@ export default function Home() {
         </div>
       </section>
 
-
       <section className="bg-[#020202] py-20" id="testimonials">
         <div className="w-full">
           <div className="flex flex-1 mb-12 pl-20 justify-between">
             <h2 className="text-3xl">
-              We Truly Value Our Clients' <br />Overall <span className="text-orange-600">Experience</span>
+              We Truly Value Our Clients' <br />
+              Overall <span className="text-orange-600">Experience</span>
             </h2>
             <div className="text-2xl font-dm-sans pr-20">
               <p className="">
@@ -186,25 +188,30 @@ export default function Home() {
           </div>
 
           <div className="flex flex-row gap-8 px-20">
-          <TestimonialCard
+            <TestimonialCard
               name="Lorem Ipsum"
               feedback="Donec auctor ligula sit amet mauris tincidunt, et viverra libero congue. Morbi vehicula interdum felis, non euismod felis auctor non. Phasellus facilisis urna ut metus mollis, a sollicitudin libero suscipit."
               imageurl="/person.jpg"
-          />
-          <TestimonialCard
+            />
+            <TestimonialCard
               name="Lorem Ipsum"
               feedback="Donec auctor ligula sit amet mauris tincidunt, et viverra libero congue. Morbi vehicula interdum felis, non euismod felis auctor non. Phasellus facilisis urna ut metus mollis, a sollicitudin libero suscipit."
               imageurl="/person.jpg"
-          /> 
-          <TestimonialCard
+            />
+            <TestimonialCard
               name="Lorem Ipsum"
               feedback="Donec auctor ligula sit amet mauris tincidunt, et viverra libero congue. Morbi vehicula interdum felis, non euismod felis auctor non. Phasellus facilisis urna ut metus mollis, a sollicitudin libero suscipit."
               imageurl="/person.jpg"
-          /> 
+            />
           </div>
-
         </div>
       </section>
+
+      <section className="bg-[#020202] py-20" id="contact-us">
+        <ContactCard />
+      </section>
+
+      <Footer />
     </main>
   );
 }
