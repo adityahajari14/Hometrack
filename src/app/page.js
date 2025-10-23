@@ -1,65 +1,169 @@
 import Image from "next/image";
+import Hero from "@/components/hero";
+import Navbar from "@/components/navbar";
+import ServiceCard from "@/components/service-card";
+import Button from "@/components/button";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="bg-[#020202] text-white">
+      <Navbar />
+      <section className="overflow-x-hidden relative" id="home">
+        <div
+          className="w-screen h-screen bg-cover bg-center"
+          style={{ backgroundImage: "url('/background.jpg')" }}
+        >
+          <div className="absolute inset-0 bg-black/64 bg-opacity-90"></div>
+          <Hero />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+      </section>
+
+      <section className="" id="insights">
+        <div className="w-full h-screen flex items-center px-20 gap-24">
+          <div className="w-1/2">
+            <h2 className="text-3xl font-bold text-left font-noto-sans">
+              Insights Hub
+            </h2>
+            <p className="font-dm-sans text-xl pt-8">
+              Welcome to Hometrack Insights Hub your central destination for
+              complete financial transparency and performance.
+              <br />
+              Here, you can explore a detailed overview of all investments made,
+              including asset classes, portfolio distribution, and growth
+              trends.
+              <br />
+              Gain real-time access to revenue generated, returns achieved, and
+              performance metrics all in one powerful dashboard.
+              <br />
+              We turn numbers into meaningful insights, helping you track
+              progress, make informed decisions, and unlock new opportunities
+              for smarter wealth growth.
+              <br />
+            </p>
+          </div>
+          <div className="flex flex-col gap-12 w-1/2">
+            <div>
+              <h2 className="text-orange-600 text-3xl">Total Assets</h2>
+              <h1 className="text-white text-6xl mt-4">$0 Billion</h1>
+            </div>
+            <hr className="border-t border-gray-600 mx-2" />
+            <div>
+              <h2 className="text-orange-600 text-3xl">Countries</h2>
+              <h1 className="text-white text-6xl">0</h1>
+            </div>
+            <hr className="border-t border-gray-600 mx-2" />
+            <div>
+              <h2 className="text-orange-600 text-3xl">Assets</h2>
+              <h1 className="text-white text-6xl">0</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#020202] py-20" id="services">
+        <div className="w-full">
+          <div className="flex flex-1 mb-12 pl-20 justify-between">
+            <h2 className="text-3xl">
+              Our <span className="text-orange-600">Services</span>
+            </h2>
+            <div className="text-2xl font-dm-sans pr-20">
+              <p className="">
+                Our work to create safe and beneficial AI requires a deep
+                <br />
+                understanding of the potential risks and benefits, as well as
+                <br />
+                careful consideration of the impact.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-row gap-8 px-20">
+            <ServiceCard title="Wealth Desk" imageurl="/wealth-desk.jpg" />
+            <ServiceCard
+              title="Real Estate Syndicates"
+              imageurl="/real-estate-syndicates.jpg"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <ServiceCard
+              title="Residency Capital"
+              imageurl="/residency-capital.jpg"
+            />
+          </div>
+          <div className="flex flex-row gap-8 mt-12 px-20">
+            <ServiceCard title="Legacy Funds" imageurl="/legacy-funds.jpg" />
+            <ServiceCard
+              title="YieldMax Reports"
+              imageurl="/yieldmax-reports.jpg"
+            />
+            <ServiceCard
+              title="Digital Portfolio Access"
+              imageurl="/digital-portfolio-access.jpg"
+            />
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="bg-black/40 py-20" id="founder">
+        <div className="w-full flex items-center px-20 gap-12">
+          <div className="w-1/2">
+            <h2 className="text-5xl font-bold font-noto-sans mb-8">
+              Meet our <span className="text-orange-600">Founder</span>
+            </h2>
+            <p className="text-lg font-dm-sans leading-8">
+              With over 24 years of banking experience across the Middle East
+              and the UK, this journey spans senior roles in Treasury, Wealth
+              Management, and Commercial Banking. A strong client-first approach
+              was built on trust, credibility, and lasting relationships.
+              <br />
+              <br />
+              In 1998, the move to the UK opened doors to further expertise
+              through a Financial Engineering degree and regulation by Financial
+              Conduct Authority, advising high-net-worth clients on diversified
+              investment portfolios. <br />
+              <br />
+              In 2006, the transition from banker to entrepreneur led to the
+              launch of a business consultancy firm in London, driven by the
+              vision to build a lasting legacy.
+            </p>
+          </div>
+
+          <div className="w-1/2 flex justify-center">
+            <Image src="/founder.png" alt="Founder" width={400} height={400} />
+          </div>
+        </div>
+        <div className="pl-20">
+          <Button label={"Read More"} />
+        </div>
+      </section>
+
+      <section className="bg-[#020202] py-20" id="safety-and-responsibility">
+        <div className="w-full">
+          <div className="flex flex-1 mb-12 pl-20 justify-between">
+            <h2 className="text-3xl">
+              Safety & <span className="text-orange-600">Responsibility</span>
+            </h2>
+            <div className="text-2xl font-dm-sans pr-20">
+              <p className="">
+                Our work to create safe and beneficial AI requires a deep
+                <br />
+                understanding of the potential risks and benefits, as well as
+                <br />
+                careful consideration of the impact.
+                <br />
+              </p>
+            </div>
+          </div>
+
+          <div className="relative w-full h-screen overflow-hidden">
+            <Image
+              src="/hand-shake.jpg"
+              alt="Safety and Responsibility"
+              width={1200}
+              height={1200}
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/50"></div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
