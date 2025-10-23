@@ -179,7 +179,7 @@ export default function Home() {
         <div className="w-full px-4 sm:px-6 lg:px-20">
           <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-0 mb-8 sm:mb-12 lg:mb-12">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold w-full lg:w-auto leading-tight">
-              We Truly Value Our Clients' <br className="hidden sm:block" />
+              We Truly Value Our Clients&apos;' <br className="hidden sm:block" />
               Overall <span className="text-orange-600">Experience</span>
             </h2>
             <div className="text-base sm:text-lg lg:text-2xl font-dm-sans lg:ml-auto text-gray-300 leading-relaxed">
