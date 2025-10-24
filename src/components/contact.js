@@ -2,8 +2,8 @@ import Button from "./button";
 
 export default function ContactCard() {
   return (
-    <div className="bg-[#000000] flex flex-col lg:flex-row max-h-auto lg:max-h-screen p-4 sm:p-6 lg:p-12 gap-6 lg:gap-6 mx-2 sm:mx-4 lg:mx-12 rounded-2xl text-center lg:text-left">
-      <div className="bg-[#202020] px-4 sm:px-8 lg:px-32 py-8 sm:py-12 lg:pb-28 rounded-xl w-full lg:w-auto lg:min-w-[300px]">
+    <div className="bg-[#000000] flex flex-col lg:flex-row items-center max-h-auto lg:max-h-screen p-4 sm:p-6 lg:p-12 gap-6 lg:gap-6 mx-2 sm:mx-4 lg:mx-12 rounded-2xl text-center lg:text-left">
+      <div className="bg-[#202020] px-4 sm:px-8 lg:px-20 py-8 sm:py-12 lg:pb-28 rounded-xl w-full lg:w-auto lg:max-w-[450px] relative overflow-hidden">
         <div>
           <h1 className="text-lg sm:text-xl lg:text-2xl text-white p-2 sm:p-4 lg:p-6 font-noto-sans">
             Contact Information
@@ -13,18 +13,32 @@ export default function ContactCard() {
           </h2>
         </div>
 
-        <div className="px-2 sm:px-4">
-          <h2 className="font-dm-sans text-base sm:text-lg lg:text-xl text-white mt-6 sm:mt-8 lg:mt-10">Phone</h2>
-          <p className="text-[#C9C9C9] text-sm sm:text-base mt-2">+1 (123) 456-7890</p>
+        <div className="px-2 sm:px-4 pt-20">
+          <div className="flex items-center gap-3 mt-2">
+            <img src="/phone.svg" alt="Phone" className="w-5 h-5" />
+            <p className="text-[#C9C9C9] text-sm sm:text-base">+1 (123) 456-7890</p>
+          </div>
           
-          <h2 className="font-dm-sans text-base sm:text-lg lg:text-xl text-white mt-6 sm:mt-8 lg:mt-10">Email</h2>
-          <p className="text-[#C9C9C9] text-sm sm:text-base mt-2">example@gmail.com</p>
+          <div className="flex items-center gap-3 mt-2 pt-10">
+            <img src="/mail.svg" alt="Email" className="w-5 h-5" />
+            <p className="text-[#C9C9C9] text-sm sm:text-base">example@gmail.com</p>
+          </div>
           
-          <h2 className="font-dm-sans text-base sm:text-lg lg:text-xl text-white mt-6 sm:mt-8 lg:mt-10">Location</h2>
-          <p className="text-[#C9C9C9] text-sm sm:text-base mt-2">
-            132 Dartmouth Street Boston, Massachusetts 02156 United States
-          </p>
+          <div className="flex items-start gap-3 mt-2 pt-10">
+            <img src="/location.svg" alt="Location" className="w-5 h-5 mt-1" />
+            <p className="text-[#C9C9C9] text-sm sm:text-base">
+              132 Dartmouth Street Boston, Massachusetts 02156 United States
+            </p>
+          </div>
         </div>
+
+        <div className="absolute bottom-6 left-6 flex gap-4 z-10">
+          <img src="/twitter.svg" alt="Twitter" className="w-6 h-6 cursor-pointer" />
+          <img src="/instagram.svg" alt="Instagram" className="w-6 h-6 cursor-pointer" />
+          <img src="/discord.svg" alt="Discord" className="w-6 h-6 cursor-pointer" />
+        </div>
+
+        <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#2C2C2C] rounded-tl-full"></div>
       </div>
 
       <div className="text-left flex-1 pl-0 sm:pl-4 lg:pl-10 w-full">

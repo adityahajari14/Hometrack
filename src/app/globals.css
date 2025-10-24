@@ -4,6 +4,10 @@
 
 @import "tailwindcss";
 
+body {
+  font-family: var(--font-dm-sans), sans-serif;
+}
+
 :root {
   --background: #020202;
   --foreground: #020202;
@@ -14,3 +18,11 @@
   --font-dm-sans: var(--font-dm-sans);
 }
 
+input[type="date"]::placeholder {
+  color: #9E9E9E;
+  opacity: 1;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}

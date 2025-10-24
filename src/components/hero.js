@@ -1,3 +1,5 @@
+"use client"
+
 export default function Hero() {
   return (
     <div className="flex flex-col lg:flex-row items-center justify-center w-full h-full relative z-10 px-4 sm:px-6 lg:px-8 gap-6 sm:gap-8 lg:gap-12 py-12 sm:py-16 lg:py-0">
@@ -24,16 +26,16 @@ export default function Hero() {
               <h3 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg">Full Name</h3>
               <input
                 type="text"
-                className="w-full mt-2 py-2 px-3 rounded-md bg-black/20 placeholder:text-white text-white text-sm sm:text-base"
-                placeholder="Enter full name"
+                className="w-full mt-2 py-2 px-3 rounded-md bg-black/20 placeholder:text-[#9E9E9E] text-white text-sm sm:text-base"
+                placeholder="Enter Full Name"
               />
             </div>
             <div className="w-full sm:w-1/2">
               <h3 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg">Email</h3>
               <input
                 type="email"
-                className="w-full mt-2 py-2 px-3 rounded-md bg-black/20 placeholder:text-white text-white text-sm sm:text-base"
-                placeholder="Enter email"
+                className="w-full mt-2 py-2 px-3 rounded-md bg-black/20 placeholder:text-[#9E9E9E] text-white text-sm sm:text-base"
+                placeholder="Enter Email"
               />
             </div>
           </div>
@@ -41,14 +43,39 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <div className="w-full sm:w-1/2">
               <h2 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg">Date</h2> 
-              <input
-                type="date"
-                className="w-full mt-2 py-2 px-3 rounded-md bg-black/20 text-white text-sm sm:text-base"
-              />
+              <div className="relative mt-2">
+                <input
+                  type="text"
+                  placeholder="DD/MM/YYYY"
+                  onClick={(e) => {
+                    e.target.type = 'date';
+                    e.target.showPicker?.();
+                  }}
+                  onFocus={(e) => {
+                    e.target.type = 'date';
+                    setTimeout(() => e.target.showPicker?.(), 0);
+                  }}
+                  onBlur={(e) => {
+                    if (!e.target.value) {
+                      e.target.type = 'text';
+                    }
+                  }}
+                  className="w-full py-2 px-3 rounded-md bg-black/20 text-white text-sm sm:text-base cursor-pointer placeholder:text-[#9E9E9E]"
+                  style={{
+                    colorScheme: 'dark',
+                    appearance: 'none',
+                  }}
+                />
+                <img
+                  src="/date.svg"
+                  alt="Date"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 pointer-events-none"
+                />
+              </div>
             </div>
             <div className="w-full sm:w-1/2">
               <h2 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg">Time</h2>
-              <select className="w-full mt-2 py-2 px-3 rounded-md bg-black/20 text-white text-sm sm:text-base">
+              <select className="w-full mt-2 py-2 px-3 rounded-md bg-black/20 text-[#9E9E9E] text-sm sm:text-base">
                 <option value="" className="bg-black/20">Select Slot</option>
                 <option value="09:00">09:00 AM</option>
                 <option value="10:00">10:00 AM</option>
