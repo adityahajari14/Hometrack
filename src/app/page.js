@@ -23,11 +23,12 @@ export default function Home() {
       </section>
 
       <section 
-        className="w-full py-12 sm:py-16 lg:py-20 bg-contain bg-right bg-no-repeat" 
+        className="w-full py-12 sm:py-16 lg:py-20 bg-contain bg-right bg-no-repeat relative" 
         id="insights"
         style={{ backgroundImage: "url('/bg-2.png')" }}
       >
-        <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-6 sm:gap-8 lg:gap-24 px-4 sm:px-6 lg:px-20">
+        <div className="absolute inset-0 bg-black/75"></div>
+        <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-6 sm:gap-8 lg:gap-24 px-4 sm:px-6 lg:px-20 relative z-10">
           <div className="w-full lg:w-1/2 px-0 sm:px-4 lg:px-8">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-left font-noto-sans mb-4 sm:mb-6 lg:mb-8">
               Insights Hub
@@ -54,7 +55,7 @@ export default function Home() {
               <h2 className="text-orange-600 text-xl sm:text-2xl lg:text-3xl font-dm-sans">
                 Total Assets
               </h2>
-              <h1 className="text-white text-3xl sm:text-4xl lg:text-6xl font-bold mt-2 sm:mt-3 lg:mt-4">
+              <h1 className="text-white text-3xl sm:text-4xl lg:text-6xl mt-2 sm:mt-3 lg:mt-4">
                 $0 Billion
               </h1>
             </div>
@@ -64,7 +65,7 @@ export default function Home() {
               <h2 className="text-orange-600 text-xl sm:text-2xl lg:text-3xl font-dm-sans">
                 Countries
               </h2>
-              <h1 className="text-white text-3xl sm:text-4xl lg:text-6xl font-bold mt-2 sm:mt-3 lg:mt-4">
+              <h1 className="text-white text-3xl sm:text-4xl lg:text-6xl mt-2 sm:mt-3 lg:mt-4">
                 0
               </h1>
             </div>
@@ -74,7 +75,7 @@ export default function Home() {
               <h2 className="text-orange-600 text-xl sm:text-2xl lg:text-3xl font-dm-sans">
                 Assets
               </h2>
-              <h1 className="text-white text-3xl sm:text-4xl lg:text-6xl font-bold mt-2 sm:mt-3 lg:mt-4">
+              <h1 className="text-white text-3xl sm:text-4xl lg:text-6xl mt-2 sm:mt-3 lg:mt-4">
                 0
               </h1>
             </div>
