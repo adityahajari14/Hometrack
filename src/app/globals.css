@@ -4,8 +4,19 @@
 
 @import "tailwindcss";
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-dm-sans), sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 :root {
@@ -25,4 +36,36 @@ input[type="date"]::placeholder {
 
 input[type="date"]::-webkit-calendar-picker-indicator {
   display: none;
+}
+
+/* Radio button styling */
+input[type="radio"] {
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: #ea580c; /* orange-600 */
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile-friendly tap targets */
+@media (max-width: 640px) {
+  button:not([type="radio"]):not([type="checkbox"]),
+  a {
+    min-height: 44px;
+  }
+  
+  input[type="radio"],
+  input[type="checkbox"] {
+    min-height: unset !important;
+    min-width: unset !important;
+  }
 }

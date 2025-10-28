@@ -12,9 +12,9 @@ export default function Home() {
     <main className="bg-[#020202] text-white overflow-x-hidden">
       <Navbar />
 
-      <section className="overflow-x-hidden relative" id="home">
+      <section className="overflow-x-hidden relative min-h-screen" id="home">
         <div
-          className="w-screen h-screen bg-cover bg-center"
+          className="w-screen min-h-screen bg-cover bg-center flex items-center"
           style={{ backgroundImage: "url('/background.jpg')" }}
         >
           <div className="absolute inset-0 bg-black/64 bg-opacity-90"></div>
@@ -23,17 +23,17 @@ export default function Home() {
       </section>
 
       <section 
-        className="w-full py-12 sm:py-16 lg:py-20 bg-contain bg-right bg-no-repeat relative" 
+        className="w-full py-12 sm:py-16 lg:py-20 bg-contain bg-right bg-no-repeat relative overflow-x-hidden" 
         id="insights"
         style={{ backgroundImage: "url('/bg-2.png')" }}
       >
         <div className="absolute inset-0 bg-black/75"></div>
-        <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-6 sm:gap-8 lg:gap-24 px-4 sm:px-6 lg:px-20 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-8 sm:gap-10 lg:gap-24 px-4 sm:px-6 lg:px-20 relative z-10">
           <div className="w-full lg:w-1/2 px-0 sm:px-4 lg:px-8">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-left font-noto-sans mb-4 sm:mb-6 lg:mb-8">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-left font-noto-sans mb-4 sm:mb-6 lg:mb-8 leading-tight">
               Insights Hub
             </h2>
-            <p className="font-dm-sans text-sm sm:text-base lg:text-lg pt-4 sm:pt-6 lg:pt-8 leading-relaxed text-gray-300">
+            <p className="font-dm-sans text-sm sm:text-base lg:text-lg pt-2 sm:pt-4 lg:pt-8 leading-relaxed text-gray-300">
               Welcome to Hometrack Insights Hub your central destination for
               complete financial transparency and performance.
               <br className="hidden sm:block" />
@@ -50,13 +50,13 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12 w-full lg:w-1/2 px-0 sm:px-4 lg:px-8">
+                    <div className="flex flex-col gap-6 sm:gap-8 lg:gap-12 w-full lg:w-1/2 px-0 sm:px-4 lg:px-8">
             <div>
               <h2 className="text-orange-600 text-xl sm:text-2xl lg:text-3xl font-dm-sans">
                 Total Assets
               </h2>
-              <h1 className="text-white text-3xl sm:text-4xl lg:text-6xl mt-2 sm:mt-3 lg:mt-4">
-                $0 Billion
+              <h1 className="text-white text-3xl sm:text-4xl lg:text-6xl mt-2 sm:mt-3 lg:mt-4 wrap-break-word">
+                $1 Billion
               </h1>
             </div>
             <hr className="border-t border-gray-600 mx-0 sm:mx-2" />
@@ -66,7 +66,7 @@ export default function Home() {
                 Countries
               </h2>
               <h1 className="text-white text-3xl sm:text-4xl lg:text-6xl mt-2 sm:mt-3 lg:mt-4">
-                0
+                15+
               </h1>
             </div>
             <hr className="border-t border-gray-600 mx-0 sm:mx-2" />
@@ -76,7 +76,7 @@ export default function Home() {
                 Assets
               </h2>
               <h1 className="text-white text-3xl sm:text-4xl lg:text-6xl mt-2 sm:mt-3 lg:mt-4">
-                0
+                10,000+
               </h1>
             </div>
           </div>
@@ -84,15 +84,15 @@ export default function Home() {
       </section>
 
       <section
-        className="bg-[#020202] py-12 sm:py-16 lg:py-20 w-full"
+        className="bg-[#020202] py-12 sm:py-16 lg:py-20 w-full overflow-x-hidden"
         id="services"
       >
         <div className="w-full px-4 sm:px-6 lg:px-20">
-          <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-0 mb-8 sm:mb-12 lg:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-noto-sans w-full lg:w-auto">
+          <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-0 mb-8 sm:mb-12 lg:mb-12 items-start">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-noto-sans w-full lg:w-auto leading-tight">
               Our <span className="text-orange-600">Services</span>
             </h2>
-            <div className="text-base sm:text-lg lg:text-2xl font-dm-sans lg:ml-auto text-gray-300 leading-relaxed">
+            <div className="text-sm sm:text-base lg:text-2xl font-dm-sans lg:ml-auto text-gray-300 leading-relaxed w-full lg:w-auto">
               <p className="">
                 Our work to create safe and beneficial AI requires a deep<br className="hidden md:block"></br>
                 understanding of the potential risks and benefits, as well as<br className="hidden md:block"></br>
@@ -125,12 +125,12 @@ export default function Home() {
       </section>
 
       <section
-        className="bg-black/40 py-12 sm:py-16 lg:py-20 w-full"
+        className="bg-black/40 py-12 sm:py-16 lg:py-20 w-full overflow-x-hidden"
         id="founder"
       >
         <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12 px-4 sm:px-6 lg:px-20 mb-8 sm:mb-12 lg:mb-12">
           <div className="w-full lg:w-1/2 px-0 sm:px-4 lg:px-0">
-            <h2 className="text-2xl sm:text-3xl lg:text-3xl font-noto-sans mb-4 sm:mb-6 lg:mb-8">
+            <h2 className="text-2xl sm:text-3xl lg:text-3xl font-noto-sans mb-4 sm:mb-6 lg:mb-8 leading-tight">
               Meet Our <span className="text-orange-600">Founder</span>
             </h2>
             <p className="text-sm sm:text-base lg:text-lg font-noto-sans leading-6 sm:leading-7 lg:leading-8 text-gray-300">
@@ -150,7 +150,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="w-full lg:w-1/2 flex justify-center px-4">
+          <div className="w-full lg:w-1/2 flex justify-center px-0 sm:px-4">
             <div className="relative w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96">
               <Image
                 src="/founder.png"
@@ -162,21 +162,21 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex md:block justify-center px-4 sm:px-6 lg:px-20">
+        <div className="flex justify-center px-4 sm:px-6 lg:px-20">
           <Button label={"Read More"} />
         </div>
       </section>
 
       <section
-        className="bg-[#020202] py-12 sm:py-16 lg:py-20 w-full"
+        className="bg-[#020202] py-12 sm:py-16 lg:py-20 w-full overflow-x-hidden"
         id="safety-and-responsibility"
       >
         <div className="w-full px-4 sm:px-6 lg:px-20">
-          <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-0 mb-8 sm:mb-12 lg:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-noto-sans w-full lg:w-auto">
+          <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-0 mb-8 sm:mb-12 lg:mb-12 items-start">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-noto-sans w-full lg:w-auto leading-tight">
               Safety & <span className="text-orange-600">Responsibility</span>
             </h2>
-            <div className="text-base sm:text-lg lg:text-2xl font-dm-sans lg:ml-auto text-gray-300 leading-relaxed">
+            <div className="text-sm sm:text-base lg:text-2xl font-dm-sans lg:ml-auto text-gray-300 leading-relaxed w-full lg:w-auto">
               <p className="">
                 Our work to create safe and beneficial AI requires a deep<br className="hidden md:block"></br>
                 understanding of the potential risks and benefits, as well as<br className="hidden md:block"></br>
@@ -198,17 +198,17 @@ export default function Home() {
       </section>
 
       <section
-        className="bg-[#020202] py-12 sm:py-16 lg:py-20 w-full"
+        className="bg-[#020202] py-12 sm:py-16 lg:py-20 w-full overflow-x-hidden"
         id="testimonials"
       >
         <div className="w-full px-4 sm:px-6 lg:px-20">
-          <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-0 mb-8 sm:mb-12 lg:mb-12">
+          <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-0 mb-8 sm:mb-12 lg:mb-12 items-start">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl w-full lg:w-auto leading-tight">
               We Truly Value Our Clients&apos;{" "}
               <br className="hidden sm:block" />
               Overall <span className="text-orange-600">Experience</span>
             </h2>
-            <div className="text-base sm:text-lg lg:text-2xl font-noto-sans lg:ml-auto text-gray-300 leading-relaxed">
+            <div className="text-sm sm:text-base lg:text-2xl font-noto-sans lg:ml-auto text-gray-300 leading-relaxed w-full lg:w-auto">
               <p className="">
                 Our work to create safe and beneficial AI requires a deep<br></br>
                 understanding of the potential risks and benefits, as well as<br></br>
@@ -238,7 +238,7 @@ export default function Home() {
       </section>
 
       <section
-        className="bg-[#020202] py-12 sm:py-16 lg:py-20 w-full"
+        className="bg-[#020202] py-12 sm:py-16 lg:py-20 w-full overflow-x-hidden"
         id="contact-us"
       >
         <ContactCard />
