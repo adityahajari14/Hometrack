@@ -1,35 +1,13 @@
 "use client"
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 export default function AnimatedCounter({ end, duration = 2000, suffix = "", prefix = "" }) {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
   const counterRef = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
-          animateCount();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
-    }
-
-    return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
-      }
-    };
-  }, [hasAnimated]);
-
-  const animateCount = () => {
+  const animateCount = useCallback(() => {
     const startTime = Date.now();
     const endValue = typeof end === 'string' ? parseFloat(end.replace(/[^0-9.]/g, '')) : end;
 
@@ -51,7 +29,30 @@ export default function AnimatedCounter({ end, duration = 2000, suffix = "", pre
     };
 
     requestAnimationFrame(updateCount);
-  };
+  }, [end, duration]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          animateCount();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentRef = counterRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [hasAnimated, animateCount]);
 
   const formatNumber = (num) => {
     // Handle different number formats

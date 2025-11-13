@@ -200,7 +200,7 @@ export default function Home() {
             <div className="scale-in-repeat bg-[#ff5810] flex flex-col gap-2.5 px-4 sm:px-[21px] py-6 sm:py-[33px] w-full">
               <div className="flex flex-col min-h-[115px] items-end justify-between w-full gap-4">
                 <p className="font-noto-sans font-bold italic leading-[1.524] text-lg sm:text-xl text-white w-full">
-                  "We don't sell property. We advise on creating lasting value"
+                  &ldquo;We don&apos;t sell property. We advise on creating lasting value&rdquo;
                 </p>
                 <div className="flex flex-col font-dm-sans font-medium items-center justify-center leading-[1.524] text-white w-full sm:w-[141px]">
                   <p className="text-base sm:text-lg w-full sm:w-[130px] text-center sm:text-left">

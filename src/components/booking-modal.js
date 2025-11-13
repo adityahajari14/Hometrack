@@ -93,6 +93,7 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
                     appearance: 'none',
                   }}
                 />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/date.svg"
                   alt="Date"

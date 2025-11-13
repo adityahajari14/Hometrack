@@ -67,13 +67,14 @@ export default function ServicePage({
       { threshold: 0.1 }
     );
 
-    if (heroContentRef.current) {
-      observer.observe(heroContentRef.current);
+    const currentRef = heroContentRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (heroContentRef.current) {
-        observer.unobserve(heroContentRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [hasAnimated]);

@@ -17,13 +17,14 @@ export default function Hero({ scrollY }) {
       { threshold: 0.1 }
     );
 
-    if (textRef.current) {
-      textObserver.observe(textRef.current);
+    const currentRef = textRef.current;
+    if (currentRef) {
+      textObserver.observe(currentRef);
     }
 
     return () => {
-      if (textRef.current) {
-        textObserver.unobserve(textRef.current);
+      if (currentRef) {
+        textObserver.unobserve(currentRef);
       }
     };
   }, [hasAnimated]);
@@ -103,6 +104,7 @@ export default function Hero({ scrollY }) {
                     appearance: 'none',
                   }}
                 />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/date.svg"
                   alt="Date"
