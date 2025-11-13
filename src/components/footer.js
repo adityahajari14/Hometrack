@@ -11,10 +11,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-black text-white border-t border-gray-800 overflow-x-hidden">
-      <div className="container mx-auto px-4 sm:px-8 lg:px-20 py-12 lg:py-16">
+    <footer className="bg-black text-white overflow-x-hidden font-dm-sans">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-20 py-12 lg:py-16 flex flex-col gap-8">
 
-        <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-44 lg:h-44 relative shrink-0 mb-6 sm:mb-8">
+        <div className="w-32 h-auto sm:w-40 lg:w-44 relative shrink-0 mx-auto sm:mx-0">
           <Image
             src="/logo.svg"
             alt="Home Track Logo"
@@ -23,11 +23,14 @@ export default function Footer() {
             width={300}
           />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          <div className="space-y-6">
-            <div className="space-y-1">
-              <h3 className="text-sm sm:text-base font-semibold mb-3">Address</h3>
-              <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
+         
+        <div className="h-0 w-full border-[0.75px] border-white opacity-20" />
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
+          <div className="space-y-6 text-center sm:text-left">
+            <div className="gap-2">
+              <h3 className="text-base sm:text-lg font-medium mb-3">Address</h3>
+              <p className="text-sm sm:text-base text-white/60 leading-relaxed">
                 2972 Westheimer Rd.
                 <br />
                 Santa Ana,
@@ -37,95 +40,59 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="space-y-3">
-            <h3 className="text-sm sm:text-base font-semibold mb-3">Info</h3>
-            <nav className="flex flex-col space-y-2.5">
-              <Link
-                href="#patients"
-                className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                For patients
-              </Link>
+          <div className="space-y-3 text-center sm:text-left">
+            <h3 className="text-base sm:text-lg font-semibold mb-3">Info</h3>
+            <nav className="flex flex-col gap-2">
               <Link
                 href="#services"
-                className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
+                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
               >
                 Services
               </Link>
               <Link
-                href="#experts"
-                className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
+                href="#terms"
+                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
               >
-                Experts
-              </Link>
-              <Link
-                href="#illnesses"
-                className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                Illnesses
+                Terms and Conditions
               </Link>
               <Link
                 href="#about"
-                className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
+                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
               >
-                About clinic
-              </Link>
-              <Link
-                href="#articles"
-                className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                Articles
-              </Link>
-              <Link
-                href="#feedback"
-                className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                Feedback
-              </Link>
-              <Link
-                href="#vacancies"
-                className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                Vacancies
-              </Link>
-              <Link
-                href="#contacts"
-                className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                Contacts
+                About Us
               </Link>
             </nav>
           </div>
 
-          <div className="space-y-3">
-            <h3 className="text-sm sm:text-base font-semibold mb-3">Contact us</h3>
-            <div className="space-y-4">
+          <div className="space-y-3 text-center sm:text-left">
+            <h3 className="text-base sm:text-lg font-semibold mb-3">Contact us</h3>
+            <div className="flex flex-col gap-2">
               <a
-                href="tel:+18919891191"
-                className="block text-xs sm:text-sm text-gray-400 hover:text-white transition-colors"
+                href="tel:+971 4 263 5775"
+                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
               >
-                +1 891 989-11-91
+                +971 4 263 5775
               </a>
               <a
-                href="mailto:help@logoipsum.com"
-                className="block text-xs sm:text-sm text-gray-400 hover:text-white transition-colors break-all"
+                href="mailto:info@hometrack.ae"
+                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
               >
-                help@logoipsum.com
+                info@hometrack.ae
               </a>
             </div>
           </div>
 
-          <div className="flex lg:justify-end items-start">
-            <div className="flex gap-3 sm:gap-4">
+          <div className="flex items-start justify-center sm:col-span-2 lg:col-span-1 lg:justify-end">
+            <div className="flex gap-2 sm:gap-3">
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-700 hover:border-gray-500 transition-colors"
+                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.10)] p-1 hover:bg-[rgba(255,255,255,0.20)] transition-colors"
                 aria-label="Instagram"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
@@ -137,11 +104,11 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-700 hover:border-gray-500 transition-colors"
+                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.10)] p-1 hover:bg-[rgba(255,255,255,0.20)] transition-colors"
                 aria-label="Facebook"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
@@ -153,11 +120,11 @@ export default function Footer() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-700 hover:border-gray-500 transition-colors"
+                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.10)] p-1 hover:bg-[rgba(255,255,255,0.20)] transition-colors"
                 aria-label="YouTube"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4 sm:w-5 sm:h-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
@@ -169,8 +136,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 lg:mt-16 pt-6 sm:pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-8 text-xs sm:text-sm text-gray-400 items-center">
+        <div className="mt-8 lg:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs sm:text-sm text-white/50 items-center">
             <p>© 2025 — Copyright</p>
             <Link
               href="#certificate"
@@ -182,7 +149,7 @@ export default function Footer() {
 
           <button
             onClick={scrollToTop}
-            className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white text-black hover:bg-gray-200 transition-colors"
+            className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white text-black hover:bg-gray-200 transition-colors"
             aria-label="Back to top"
           >
             <svg

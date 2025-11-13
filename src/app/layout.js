@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, DM_Sans, Noto_Sans } from "next/font/google";
+import { Geist, Geist_Mono, DM_Sans, Noto_Sans, Manrope } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -21,6 +21,11 @@ const notoSans = Noto_Sans({
   subsets: ["latin"],
 });
 
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+});
+
 export const metadata = {
   title: "Hometrack Wealth Management",
   description: "Where Expertise Meets Excellence",
@@ -30,7 +35,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${dmSans.variable} ${notoSans.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${dmSans.variable} ${notoSans.variable} ${manrope.variable} antialiased`}
       >
         {children}
       </body>
