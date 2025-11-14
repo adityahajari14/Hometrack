@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import Button from "./button";
 
@@ -185,7 +186,7 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
             {/* Desktop: Horizontal Scroll */}
             <nav className="hidden lg:flex items-center gap-3 sm:gap-4 lg:gap-6 overflow-x-auto scrollbar-hide">
               {secondaryNavItems.map((item) => (
-                <a
+                <Link
                   key={item.text}
                   href={item.href}
                   className={`font-dm-sans text-xs sm:text-sm lg:text-base whitespace-nowrap transition-colors min-h-11 flex items-center ${
@@ -195,7 +196,7 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
                   }`}
                 >
                   {item.text}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>

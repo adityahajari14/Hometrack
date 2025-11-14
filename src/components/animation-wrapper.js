@@ -4,44 +4,25 @@ import { useEffect } from 'react';
 
 export default function AnimationWrapper({ children }) {
   useEffect(() => {
-    const observerOnce = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            if (entry.target.classList.contains('animate-on-scroll')) {
-              observerOnce.unobserve(entry.target);
-            }
+            // Unobserve after animation triggers to prevent re-triggering
+            observer.unobserve(entry.target);
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    const observerRepeat = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          } else {
-            entry.target.classList.remove('visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    // Observe elements that animate once
-    const onceElements = document.querySelectorAll('.animate-on-scroll');
-    onceElements.forEach((el) => observerOnce.observe(el));
-
-    // Observe elements that animate repeatedly
-    const repeatElements = document.querySelectorAll('.scale-in-repeat');
-    repeatElements.forEach((el) => observerRepeat.observe(el));
+    // Observe all elements with animation classes
+    const animatedElements = document.querySelectorAll('.animate-on-scroll, .scale-in-repeat');
+    animatedElements.forEach((el) => observer.observe(el));
 
     return () => {
-      onceElements.forEach((el) => observerOnce.unobserve(el));
-      repeatElements.forEach((el) => observerRepeat.unobserve(el));
+      animatedElements.forEach((el) => observer.unobserve(el));
     };
   }, []);
 

@@ -165,7 +165,7 @@ export default function ServicePage({
               </h2>
               
               {/* Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+              <div className="grid gap-4 sm:gap-5 lg:gap-6" style={{ gridTemplateColumns: `repeat(${featureCards.length}, 1fr)` }}>
                 {featureCards.map((card, index) => (
                   <div key={index} className="scale-in-repeat bg-[#0b0b0b] border border-[#373737] p-4 sm:p-5 lg:p-6 rounded-md">
                     <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
