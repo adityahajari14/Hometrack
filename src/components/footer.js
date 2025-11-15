@@ -26,8 +26,8 @@ export default function Footer() {
          
         <div className="h-0 w-full border-[0.75px] border-white opacity-20" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
-          <div className="space-y-6 text-center sm:text-left">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-4">
+          <div className="space-y-6 text-center sm:text-left min-w-0">
             <div className="gap-2">
               <h3 className="text-base sm:text-lg font-medium mb-3">Address</h3>
               <p className="text-sm sm:text-base text-white/60 leading-relaxed">
@@ -40,42 +40,42 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="space-y-3 text-center sm:text-left">
-            <h3 className="text-base sm:text-lg font-semibold mb-3">Info</h3>
-            <nav className="flex flex-col gap-2">
+          <div className="space-y-1 sm:space-y-3 text-center sm:text-left min-w-0">
+            <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">Info</h3>
+            <nav className="flex flex-col gap-1 sm:gap-2">
               <Link
                 href="#services"
-                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
+                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors min-h-0!"
               >
                 Services
               </Link>
               <Link
                 href="#terms"
-                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
+                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors min-h-0!"
               >
                 Terms and Conditions
               </Link>
               <Link
                 href="#about"
-                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
+                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors min-h-0!"
               >
                 About Us
               </Link>
             </nav>
           </div>
 
-          <div className="space-y-3 text-center sm:text-left">
-            <h3 className="text-base sm:text-lg font-semibold mb-3">Contact us</h3>
-            <div className="flex flex-col gap-2">
+          <div className="space-y-1 sm:space-y-3 text-center sm:text-left min-w-0">
+            <h3 className="text-base sm:text-lg font-semibold mb-2 sm:mb-3">Contact us</h3>
+            <div className="flex flex-col gap-1 sm:gap-2">
               <a
                 href="tel:+971 4 263 5775"
-                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
+                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors min-h-0!"
               >
                 +971 4 263 5775
               </a>
               <a
                 href="mailto:info@hometrack.ae"
-                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors"
+                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors min-h-0!"
               >
                 info@hometrack.ae
               </a>
@@ -88,7 +88,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.10)] p-1 hover:bg-[rgba(255,255,255,0.20)] transition-colors"
+                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.10)] p-1 hover:bg-[rgba(255,255,255,0.20)] transition-colors min-h-0!"
                 aria-label="Instagram"
               >
                 <svg
@@ -104,7 +104,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.10)] p-1 hover:bg-[rgba(255,255,255,0.20)] transition-colors"
+                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.10)] p-1 hover:bg-[rgba(255,255,255,0.20)] transition-colors min-h-0!"
                 aria-label="Facebook"
               >
                 <svg
@@ -120,7 +120,7 @@ export default function Footer() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.10)] p-1 hover:bg-[rgba(255,255,255,0.20)] transition-colors"
+                className="w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-[rgba(255,255,255,0.10)] p-1 hover:bg-[rgba(255,255,255,0.20)] transition-colors min-h-0!"
                 aria-label="YouTube"
               >
                 <svg
@@ -149,7 +149,7 @@ export default function Footer() {
 
           <button
             onClick={scrollToTop}
-            className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white text-black hover:bg-gray-200 transition-colors"
+            className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white text-black hover:bg-gray-200 transition-colors min-h-0!"
             aria-label="Back to top"
           >
             <svg
