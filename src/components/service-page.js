@@ -175,7 +175,7 @@ export default function ServicePage({
           <section className="mb-16 sm:mb-20 lg:mb-24">
             <div className="flex flex-col gap-3.5 max-w-[1356px]">
               <h2 className="animate-on-scroll slide-in-left font-noto-sans font-medium text-2xl sm:text-3xl leading-tight">
-                <span className="text-orange-600">{aboutTitle}</span>
+                <span className="text-orange-600 font-semibold">{aboutTitle}</span>
                 <span className="text-white">{aboutTitleHighlight}</span>
               </h2>
               <p className="scale-in-repeat font-dm-sans text-base sm:text-lg lg:text-xl leading-relaxed text-white">
@@ -191,7 +191,7 @@ export default function ServicePage({
             <div className="flex flex-col gap-6 sm:gap-7 lg:gap-8 max-w-[1440px] m-auto">
               <h2 className="animate-on-scroll slide-in-left font-noto-sans font-medium text-2xl sm:text-3xl leading-tight">
                 <span className="text-white">{featureCardsTitle}</span>
-                <span className="text-orange-600">{featureCardsTitleHighlight}</span>
+                <span className="text-orange-600 font-semibold">{featureCardsTitleHighlight}</span>
                 <span className="text-white">{featureCardsTitleEnd}</span>
               </h2>
               
@@ -278,7 +278,7 @@ export default function ServicePage({
                   {/* Close Button */}
                   <button
                     onClick={() => setIsVideoPlaying(false)}
-                    className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 text-white hover:text-orange-600 transition-colors bg-black/50 rounded-full p-1.5 sm:p-2 backdrop-blur-sm min-h-0!"
+                    className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 text-white hover:text-orange-600 hover:font-semibold transition-colors bg-black/50 rounded-full p-1.5 sm:p-2 backdrop-blur-sm min-h-0!"
                   >
                     <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

@@ -31,11 +31,7 @@ export default function Footer() {
             <div className="gap-2">
               <h3 className="text-base sm:text-lg font-medium mb-3">Address</h3>
               <p className="text-sm sm:text-base text-white/60 leading-relaxed">
-                2972 Westheimer Rd.
-                <br />
-                Santa Ana,
-                <br />
-                Illinois 85486
+                Office 31, 3rd Floor The Convention Tower, The World Trade Center, Dubai, UAE
               </p>
             </div>
           </div>
@@ -72,6 +68,12 @@ export default function Footer() {
                 className="text-sm sm:text-base text-white/60 hover:text-white transition-colors min-h-0!"
               >
                 +971 4 263 5775
+              </a>
+              <a
+                href="tel:+971 54 377 1818"
+                className="text-sm sm:text-base text-white/60 hover:text-white transition-colors min-h-0!"
+              >
+                +971 54 377 1818
               </a>
               <a
                 href="mailto:info@hometrack.ae"

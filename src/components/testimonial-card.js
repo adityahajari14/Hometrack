@@ -17,7 +17,7 @@ export default function TestimonialCard({
             height={50}
             className="rounded-full w-12 h-12"
           />
-          <div className="absolute inset-0 bg-black/60 rounded-full"></div>
+          <div className="absolute inset-0 bg-black/40 rounded-full"></div>
         </div>
         <div className="flex-1 min-w-0 text-center sm:text-left">
           <h3 className="text-lg font-semibold text-white font-noto-sans">{name}</h3>

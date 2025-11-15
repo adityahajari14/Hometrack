@@ -46,9 +46,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/75"></div>
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-20 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-8 sm:gap-10 lg:gap-24">
-            <div className="w-full lg:w-full px-0 sm:px-4 lg:px-8">
+            <div className="w-full lg:w-full">
             <h2 className="animate-on-scroll slide-in-left text-2xl sm:text-3xl lg:text-4xl font-medium text-left font-noto-sans mb-4 sm:mb-6 lg:mb-8 leading-tight">
-              <span className="text-orange-600">Insights</span> that inform wealth.
+              <span className="text-orange-600 font-semibold">Insights</span> that inform wealth.
             </h2>
             <p className="scale-in-repeat font-dm-sans text-base sm:text-lg lg:text-xl pt-2 sm:pt-4 lg:pt-8 leading-relaxed text-white">
               Our Insights Hub offers a clear view of property markets, economic shifts, and investment patterns that shape value.
@@ -56,7 +56,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="scale-in-repeat flex flex-col gap-4 sm:gap-6 lg:gap-8 w-full lg:w-1/2 px-0 sm:px-4 lg:px-8">
+          <div className="scale-in-repeat flex flex-col gap-4 sm:gap-6 lg:gap-8 w-full lg:w-1/2">
             <div>
               <h2 className="text-orange-600 text-lg sm:text-xl lg:text-2xl font-manrope font-medium">
                 Total Assets
@@ -97,7 +97,7 @@ export default function Home() {
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-20">
           <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-60 mb-8 sm:mb-12 items-start">
             <h2 className="animate-on-scroll slide-in-left text-xl sm:text-2xl lg:text-3xl w-full lg:w-auto leading-tight font-noto-sans font-medium text-nowrap">
-              Our <span className="text-orange-600">Services</span>
+              Our <span className="text-orange-600 font-semibold">Services</span>
             </h2>
             <div className="scale-in-repeat text-sm sm:text-base lg:text-xl font-dm-sans lg:ml-auto text-white leading-relaxed w-full lg:w-auto">
               <p className="">
@@ -176,7 +176,7 @@ export default function Home() {
           <div className="w-full lg:w-1/2 px-0 sm:px-4 lg:px-0 flex flex-col gap-6 sm:gap-8 lg:gap-10">
             {/* Heading - Always First */}
             <h2 className="animate-on-scroll slide-in-left text-2xl sm:text-3xl lg:text-3xl font-noto-sans leading-tight">
-              Meet Our <span className="text-orange-600">Founder</span>
+              Meet Our <span className="text-orange-600 font-semibold">Founder</span>
             </h2>
             
             {/* Image - Second on Mobile (after heading, before content), Hidden on Desktop */}
@@ -236,7 +236,7 @@ export default function Home() {
         <div className="flex flex-col gap-6 sm:gap-7 lg:gap-8 max-w-[1440px] m-auto px-4 sm:px-6 lg:px-20">
           <h2 className="animate-on-scroll slide-in-left font-noto-sans font-medium text-2xl sm:text-3xl leading-tight">
             <span className="text-white">Our </span>
-            <span className="text-orange-600">Values</span>
+            <span className="text-orange-600 font-semibold">Values</span>
           </h2>
           
           {/* Cards */}

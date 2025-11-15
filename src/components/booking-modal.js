@@ -1,9 +1,18 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import ConfirmationModal from "./confirmation-modal";
 
 export default function BookingModal({ isOpen, onClose, serviceName }) {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    date: "",
+    time: ""
+  });
+
   // Close modal on Escape key press
   useEffect(() => {
     const handleEscape = (e) => {
@@ -23,6 +32,23 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you would typically send the booking data to your backend
+    console.log("Booking submitted:", formData);
+    
+    // Show confirmation modal
+    setShowConfirmation(true);
+    
+    // Reset form
+    setFormData({
+      fullName: "",
+      email: "",
+      date: "",
+      time: ""
+    });
+  };
 
   const modalContent = (
     <div 
@@ -49,12 +75,15 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
         </div>
 
         {/* Form */}
-        <div className="flex flex-col gap-3 sm:gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4">
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4"> 
             <div className="w-full sm:w-1/2">
               <h3 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg mb-2">Full Name</h3>
               <input
                 type="text"
+                value={formData.fullName}
+                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                required
                 className="w-full py-2.5 sm:py-3 px-3 rounded-md bg-black/20 border border-[#313131] placeholder:text-[#9E9E9E] text-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-11"
                 placeholder="Enter Full Name"
               />
@@ -63,6 +92,9 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
               <h3 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg mb-2">Email</h3>
               <input
                 type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
                 className="w-full py-2.5 sm:py-3 px-3 rounded-md bg-black/20 border border-[#313131] placeholder:text-[#9E9E9E] text-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-11"
                 placeholder="Enter Email"
               />
@@ -76,6 +108,9 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
                 <input
                   type="text"
                   placeholder="DD/MM/YYYY"
+                  value={formData.date}
+                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                  required
                   onClick={(e) => {
                     e.target.type = 'date';
                     e.target.showPicker?.();
@@ -106,7 +141,11 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
             <div className="w-full sm:w-1/2">
               <h2 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg mb-2">Time</h2>
               <div className="relative">
-                <select className="w-full py-2.5 sm:py-3 px-3 pr-9 rounded-md bg-black/20 border border-[#313131] text-[#9E9E9E] text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-11 appearance-none cursor-pointer [&:has(option:checked:not(:first-child))]:text-white">
+                <select 
+                  value={formData.time}
+                  onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                  required
+                  className="w-full py-2.5 sm:py-3 px-3 pr-9 rounded-md bg-black/20 border border-[#313131] text-[#9E9E9E] text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-11 appearance-none cursor-pointer [&:has(option:checked:not(:first-child))]:text-white">
                   <option value="">Select Slot</option>
                   <option value="09:00">09:00 AM</option>
                   <option value="10:00">10:00 AM</option>
@@ -123,17 +162,26 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
               </div>
             </div>
           </div>
-        </div>
 
         <div className="mt-6 sm:mt-8">
-          <button className="px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 bg-orange-600 hover:bg-orange-700 transition-colors duration-200 text-white rounded-sm font-dm-sans text-sm sm:text-base lg:text-base min-h-11">
+          <button type="submit" className="px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 bg-orange-600 hover:bg-orange-700 transition-colors duration-200 text-white rounded-sm font-dm-sans text-sm sm:text-base lg:text-base min-h-11">
             Book a Slot
           </button>
         </div>
+        </form>
         </div>
       </div>
     </div>
   );
 
-  return createPortal(modalContent, document.body);
+  return (
+    <>
+      {createPortal(modalContent, document.body)}
+      <ConfirmationModal 
+        isOpen={showConfirmation}
+        onClose={() => setShowConfirmation(false)}
+        type="booking"
+      />
+    </>
+  );
 }

@@ -1,9 +1,17 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react';
+import ConfirmationModal from './confirmation-modal';
 
 export default function Hero({ scrollY }) {
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    date: "",
+    time: ""
+  });
   const textRef = useRef(null);
   const formRef = useRef(null);
 
@@ -29,6 +37,23 @@ export default function Hero({ scrollY }) {
     };
   }, [hasAnimated]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you would typically send the consultation booking to your backend
+    console.log("Consultation submitted:", formData);
+    
+    // Show confirmation modal
+    setShowConfirmation(true);
+    
+    // Reset form
+    setFormData({
+      fullName: "",
+      email: "",
+      date: "",
+      time: ""
+    });
+  };
+
   return (
     <div className="flex flex-col lg:flex-row items-center justify-center w-full h-full relative z-10 px-4 sm:px-6 lg:px-8 gap-6 sm:gap-8 lg:gap-12 pt-20 sm:pt-24 lg:pt-28 pb-8 sm:pb-12 lg:pb-16">
       <div 
@@ -38,7 +63,7 @@ export default function Hero({ scrollY }) {
         }`}
       >
         <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl text-white font-noto-sans font-medium leading-tight">
-          Where <span className="italic text-orange-600">Expertise</span> Meets
+          Where <span className="italic text-orange-600 font-semibold">Expertise</span> Meets
         </h1>
         <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl text-white font-noto-sans font-medium mb-3 sm:mb-4 lg:mb-6 mt-1 sm:mt-2 leading-tight">
           Excellence
@@ -57,12 +82,15 @@ export default function Hero({ scrollY }) {
         <h2 className="text-white font-dm-sans text-base sm:text-xl lg:text-2xl xl:text-3xl mb-3 sm:mb-4 lg:mb-6">
           Book For Consultation
         </h2>
-        <div className="flex flex-col gap-2.5 sm:gap-3 lg:gap-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-2.5 sm:gap-3 lg:gap-4">
           <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 lg:gap-4"> 
             <div className="w-full sm:w-1/2">
               <h3 className="text-white font-dm-sans text-xs sm:text-sm lg:text-base xl:text-lg mb-1.5 sm:mb-2">Full Name</h3>
               <input
                 type="text"
+                value={formData.fullName}
+                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                required
                 className="w-full py-2 sm:py-2.5 lg:py-3 px-2.5 sm:px-3 rounded-md bg-black/20 placeholder:text-[#9E9E9E] text-white text-xs sm:text-sm lg:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-10 sm:min-h-11"
                 placeholder="Enter Full Name"
               />
@@ -71,6 +99,9 @@ export default function Hero({ scrollY }) {
               <h3 className="text-white font-dm-sans text-xs sm:text-sm lg:text-base xl:text-lg mb-1.5 sm:mb-2">Email</h3>
               <input
                 type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
                 className="w-full py-2 sm:py-2.5 lg:py-3 px-2.5 sm:px-3 rounded-md bg-black/20 placeholder:text-[#9E9E9E] text-white text-xs sm:text-sm lg:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-10 sm:min-h-11"
                 placeholder="Enter Email"
               />
@@ -84,6 +115,9 @@ export default function Hero({ scrollY }) {
                 <input
                   type="text"
                   placeholder="DD/MM/YYYY"
+                  value={formData.date}
+                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                  required
                   onClick={(e) => {
                     e.target.type = 'date';
                     e.target.showPicker?.();
@@ -114,7 +148,11 @@ export default function Hero({ scrollY }) {
             <div className="w-full sm:w-1/2">
               <h2 className="text-white font-dm-sans text-xs sm:text-sm lg:text-base xl:text-lg mb-1.5 sm:mb-2">Time</h2>
               <div className="relative">
-                <select className="w-full py-2 sm:py-2.5 lg:py-3 px-2.5 sm:px-3 pr-8 sm:pr-9 rounded-md bg-black/20 text-[#9E9E9E] text-xs sm:text-sm lg:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-10 sm:min-h-11 appearance-none cursor-pointer [&:has(option:checked:not(:first-child))]:text-white">
+                <select 
+                  value={formData.time}
+                  onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                  required
+                  className="w-full py-2 sm:py-2.5 lg:py-3 px-2.5 sm:px-3 pr-8 sm:pr-9 rounded-md bg-black/20 text-[#9E9E9E] text-xs sm:text-sm lg:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-10 sm:min-h-11 appearance-none cursor-pointer [&:has(option:checked:not(:first-child))]:text-white">
                   <option value="">Select Slot</option>
                   <option value="09:00">09:00 AM</option>
                   <option value="10:00">10:00 AM</option>
@@ -131,14 +169,20 @@ export default function Hero({ scrollY }) {
               </div>
             </div>
           </div>
-        </div>
 
         <div className="mt-4 sm:mt-6 lg:mt-8">
-          <button className="px-4 sm:px-5 lg:px-6 xl:px-8 py-2 sm:py-2.5 lg:py-3 bg-orange-600 hover:bg-orange-700 transition-colors duration-200 text-white rounded-sm font-dm-sans text-xs sm:text-sm lg:text-base min-h-10 sm:min-h-11">
+          <button type="submit" className="px-4 sm:px-5 lg:px-6 xl:px-8 py-2 sm:py-2.5 lg:py-3 bg-orange-600 hover:bg-orange-700 transition-colors duration-200 text-white rounded-sm font-dm-sans text-xs sm:text-sm lg:text-base min-h-10 sm:min-h-11">
             Book a Slot
           </button>
         </div>
+        </form>
       </div>
+
+      <ConfirmationModal 
+        isOpen={showConfirmation}
+        onClose={() => setShowConfirmation(false)}
+        type="consultation"
+      />
     </div>
   );
 }
