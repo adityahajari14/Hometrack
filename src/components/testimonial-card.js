@@ -37,7 +37,7 @@ export default function TestimonialCard({
           </div>
         </div>
       </div>
-      <p className="text-base text-gray-300 leading-relaxed line-clamp-4 sm:line-clamp-none">{feedback}</p>
+      <p className="text-base sm:text-lg text-gray-300 leading-relaxed line-clamp-4 sm:line-clamp-none">{feedback}</p>
     </div>
   );
 }

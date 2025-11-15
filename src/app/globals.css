@@ -18,6 +18,7 @@ body {
   overflow-x: hidden;
   width: 100%;
   position: relative;
+  background-color: #000000;
 }
 
 :root {
@@ -45,6 +46,27 @@ input[type="radio"] {
   flex-shrink: 0;
   cursor: pointer;
   accent-color: #ea580c; /* orange-600 */
+}
+
+/* Custom select dropdown styling */
+select,
+input[type="date"] {
+  color-scheme: dark;
+}
+
+select option {
+  background-color: #0a0a0a;
+  color: white;
+  padding: 10px;
+}
+
+select option:first-child {
+  color: #9E9E9E;
+}
+
+select option:checked,
+select option:hover {
+  background: linear-gradient(to right, rgba(234, 88, 12, 0.2), rgba(234, 88, 12, 0.1));
 }
 
 /* Ensure images don't overflow */
@@ -86,7 +108,7 @@ html {
 @keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-20px);
   }
   to {
     opacity: 1;
@@ -97,7 +119,7 @@ html {
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
@@ -115,11 +137,11 @@ html {
 }
 
 .slide-in-left.visible {
-  animation: slideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+  animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
 }
 
 .scale-in.visible {
-  animation: scaleIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s forwards;
+  animation: scaleIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s forwards;
 }
 
 .scale-in-repeat {
@@ -127,5 +149,40 @@ html {
 }
 
 .scale-in-repeat.visible {
-  animation: scaleIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+  animation: scaleIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s forwards;
+}
+
+/* Page Transition Animations */
+@keyframes pageExit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.page-transition-container {
+  will-change: opacity, filter;
+  background-color: #000000;
+  min-height: 100vh;
+}
+
+.page-transition-enter {
+  animation: pageEnter 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.page-transition-exit {
+  animation: pageExit 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }

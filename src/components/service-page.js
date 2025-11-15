@@ -80,7 +80,7 @@ export default function ServicePage({
   }, [hasAnimated]);
 
   return (
-    <AnimationWrapper>
+    <AnimationWrapper key={heroTitle}>
       <div className="bg-black text-white min-h-screen overflow-x-hidden">
       {/* Hero Section with Background */}
       {showHero && (

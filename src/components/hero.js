@@ -44,8 +44,7 @@ export default function Hero({ scrollY }) {
           Excellence
         </h1>
         <h3 className="text-xs sm:text-sm lg:text-xl text-white font-dm-sans leading-5 sm:leading-6 lg:leading-8">
-          Welcome to Hometrack Wealth Management your trusted partner in
-          building and preserving your financial future. Let our expert team help you grow, protect, and manage your wealth with confidence.
+          Welcome to hometrack real estate- a name built on trust, discipline, and discretion. We bring decades of financial insight to the world of real estate, guiding every transaction with precision and integrity. Whether you seek a residence or an investment, we help you make decisions that endure. Let our expert team help you find your dream home with ease.
         </h3>
       </div>
 
@@ -114,17 +113,22 @@ export default function Hero({ scrollY }) {
             </div>
             <div className="w-full sm:w-1/2">
               <h2 className="text-white font-dm-sans text-xs sm:text-sm lg:text-base xl:text-lg mb-1.5 sm:mb-2">Time</h2>
-              <select className="w-full py-2 sm:py-2.5 lg:py-3 px-2.5 sm:px-3 rounded-md bg-black/20 text-[#9E9E9E] text-xs sm:text-sm lg:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-10 sm:min-h-11">
-                <option value="" className="bg-black/20">Select Slot</option>
-                <option value="09:00">09:00 AM</option>
-                <option value="10:00">10:00 AM</option>
-                <option value="11:00">11:00 AM</option>
-                <option value="12:00">12:00 PM</option>
-                <option value="14:00">2:00 PM</option>
-                <option value="15:00">3:00 PM</option>
-                <option value="16:00">4:00 PM</option>
-                <option value="17:00">5:00 PM</option>
-              </select>
+              <div className="relative">
+                <select className="w-full py-2 sm:py-2.5 lg:py-3 px-2.5 sm:px-3 pr-8 sm:pr-9 rounded-md bg-black/20 text-[#9E9E9E] text-xs sm:text-sm lg:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-10 sm:min-h-11 appearance-none cursor-pointer [&:has(option:checked:not(:first-child))]:text-white">
+                  <option value="">Select Slot</option>
+                  <option value="09:00">09:00 AM</option>
+                  <option value="10:00">10:00 AM</option>
+                  <option value="11:00">11:00 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="14:00">2:00 PM</option>
+                  <option value="15:00">3:00 PM</option>
+                  <option value="16:00">4:00 PM</option>
+                  <option value="17:00">5:00 PM</option>
+                </select>
+                <svg className="absolute right-2.5 sm:right-3 top-1/2 transform -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 pointer-events-none text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>

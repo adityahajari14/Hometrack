@@ -4,9 +4,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Button from "./button";
+import ContactModal from "./contact-modal";
 
 export default function Navbar({ showSecondaryNav = false, activeSecondaryItem = "" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  
+  // Check if on home page
+  useEffect(() => {
+    setIsHomePage(window.location.pathname === '/');
+  }, []);
+  
+  // Handle scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   // Handle scrolling to section on page load if there's a hash in URL
   useEffect(() => {
@@ -63,12 +82,16 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Main Navigation */}
-      <nav className="w-full bg-[rgba(7,7,7,0.36)] backdrop-blur-md">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5 lg:py-6 flex items-center justify-between gap-4 lg:gap-40">
+      <nav className={`w-full transition-all duration-300 ${
+        isHomePage && !isScrolled 
+          ? 'bg-transparent' 
+          : 'bg-[rgba(7,7,7,0.36)] backdrop-blur-md'
+      }`}>
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 flex items-center justify-between gap-4 lg:gap-40">
           {/* Logo + Menu */}
           <div className="flex items-center gap-4 lg:gap-16">
             {/* Logo */}
-            <div className="w-[140px] sm:w-[170px] lg:w-[201px] h-auto relative shrink-0">
+            <div className="w-[160px] sm:w-[170px] lg:w-[201px] h-auto relative shrink-0">
               <Image 
                 src="/logo.svg" 
                 alt="Home Track Logo" 
@@ -99,7 +122,7 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
           
           {/* Desktop Contact Button */}
           <div className="hidden lg:flex items-center ml-auto">
-            <Button label="Contact Us" />
+            <Button label="Contact Us" onClick={() => setIsContactModalOpen(true)} />
           </div>
           
           {/* Mobile Menu Button */}
@@ -152,12 +175,18 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
                 </a>
               ))}
               <div className="pt-2">
-                <Button label="Contact Us" />
+                <Button label="Contact Us" onClick={() => setIsContactModalOpen(true)} />
               </div>
             </div>
           </div>
         )}
       </nav>
+
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
 
       {/* Secondary Navigation - Services */}
       {showSecondaryNav && secondaryNavItems.length > 0 && (

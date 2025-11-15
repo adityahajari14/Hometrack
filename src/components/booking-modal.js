@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 
 export default function BookingModal({ isOpen, onClose, serviceName }) {
   // Close modal on Escape key press
@@ -23,15 +24,16 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
 
   if (!isOpen) return null;
 
-  return (
+  const modalContent = (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+      className="fixed top-0 left-0 right-0 bottom-0 z-[9999] bg-black/70 backdrop-blur-sm"
       onClick={onClose}
     >
-      <div 
-        className="w-full max-w-2xl bg-black rounded-md py-6 sm:py-8 lg:py-8 px-4 sm:px-6 lg:px-8 max-h-[90vh] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="fixed top-0 left-0 right-0 bottom-0 overflow-y-auto flex items-center justify-center p-4">
+        <div 
+          className="w-full max-w-2xl bg-black rounded-md py-6 sm:py-8 lg:py-8 px-4 sm:px-6 lg:px-8 my-8"
+          onClick={(e) => e.stopPropagation()}
+        >
         {/* Header with Close Button */}
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-white font-dm-sans text-xl sm:text-2xl lg:text-3xl">
@@ -103,17 +105,22 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
             </div>
             <div className="w-full sm:w-1/2">
               <h2 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg mb-2">Time</h2>
-              <select className="w-full py-2.5 sm:py-3 px-3 rounded-md bg-black/20 border border-[#313131] text-[#9E9E9E] text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-11">
-                <option value="" className="bg-black/20">Select Slot</option>
-                <option value="09:00">09:00 AM</option>
-                <option value="10:00">10:00 AM</option>
-                <option value="11:00">11:00 AM</option>
-                <option value="12:00">12:00 PM</option>
-                <option value="14:00">2:00 PM</option>
-                <option value="15:00">3:00 PM</option>
-                <option value="16:00">4:00 PM</option>
-                <option value="17:00">5:00 PM</option>
-              </select>
+              <div className="relative">
+                <select className="w-full py-2.5 sm:py-3 px-3 pr-9 rounded-md bg-black/20 border border-[#313131] text-[#9E9E9E] text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-orange-600 min-h-11 appearance-none cursor-pointer [&:has(option:checked:not(:first-child))]:text-white">
+                  <option value="">Select Slot</option>
+                  <option value="09:00">09:00 AM</option>
+                  <option value="10:00">10:00 AM</option>
+                  <option value="11:00">11:00 AM</option>
+                  <option value="12:00">12:00 PM</option>
+                  <option value="14:00">2:00 PM</option>
+                  <option value="15:00">3:00 PM</option>
+                  <option value="16:00">4:00 PM</option>
+                  <option value="17:00">5:00 PM</option>
+                </select>
+                <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 pointer-events-none text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
@@ -123,7 +130,10 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
             Book a Slot
           </button>
         </div>
+        </div>
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }
