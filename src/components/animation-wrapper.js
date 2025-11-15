@@ -20,22 +20,30 @@ export default function AnimationWrapper({ children }) {
 
     // Only trigger transition if pathname actually changed
     if (prevPathnameRef.current !== pathname) {
-      // Start exit animation
-      setAnimationState('exit');
-      
       // Scroll to top instantly
       window.scrollTo({ top: 0, behavior: 'instant' });
       
-      const timeout = setTimeout(() => {
+      // Use setTimeout to defer state updates and avoid synchronous setState in effect
+      const exitTimeout = setTimeout(() => {
+        setAnimationState('exit');
+      }, 0);
+      
+      const transitionTimeout = setTimeout(() => {
         setDisplayContent(children);
         prevPathnameRef.current = pathname;
         // Trigger enter animation
         setAnimationState('enter');
       }, 300);
 
-      return () => clearTimeout(timeout);
+      return () => {
+        clearTimeout(exitTimeout);
+        clearTimeout(transitionTimeout);
+      };
     } else {
-      setDisplayContent(children);
+      // Defer state update to avoid synchronous setState
+      setTimeout(() => {
+        setDisplayContent(children);
+      }, 0);
     }
   }, [pathname, children]);
 

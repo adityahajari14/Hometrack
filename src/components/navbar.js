@@ -14,7 +14,10 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
   
   // Check if on home page
   useEffect(() => {
-    setIsHomePage(window.location.pathname === '/');
+    // Defer setState to avoid synchronous call in effect
+    setTimeout(() => {
+      setIsHomePage(window.location.pathname === '/');
+    }, 0);
   }, []);
   
   // Handle scroll detection
