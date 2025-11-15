@@ -6,6 +6,7 @@ import ConfirmationModal from "./confirmation-modal";
 
 export default function BookingModal({ isOpen, onClose, serviceName }) {
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -33,21 +34,40 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the booking data to your backend
-    console.log("Booking submitted:", formData);
-    
-    // Show confirmation modal
-    setShowConfirmation(true);
-    
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      date: "",
-      time: ""
-    });
+    setIsSubmitting(true);
+
+    try {
+      const formDataToSend = new FormData(e.target);
+      formDataToSend.append("access_key", "92607a42-97c8-4fed-b90e-4304a34f48eb");
+      formDataToSend.append("service", serviceName || "Consultation");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setShowConfirmation(true);
+        setFormData({
+          fullName: "",
+          email: "",
+          date: "",
+          time: ""
+        });
+      } else {
+        console.error("Form submission error:", data);
+        alert("Failed to book appointment. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Failed to book appointment. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const modalContent = (
@@ -81,6 +101,7 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
               <h3 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg mb-2">Full Name</h3>
               <input
                 type="text"
+                name="name"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 required
@@ -92,6 +113,7 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
               <h3 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg mb-2">Email</h3>
               <input
                 type="email"
+                name="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
@@ -107,6 +129,7 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
               <div className="relative">
                 <input
                   type="text"
+                  name="date"
                   placeholder="DD/MM/YYYY"
                   value={formData.date}
                   onChange={(e) => setFormData({ ...formData, date: e.target.value })}
@@ -142,6 +165,7 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
               <h2 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg mb-2">Time</h2>
               <div className="relative">
                 <select 
+                  name="time"
                   value={formData.time}
                   onChange={(e) => setFormData({ ...formData, time: e.target.value })}
                   required
@@ -164,8 +188,12 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
           </div>
 
         <div className="mt-6 sm:mt-8">
-          <button type="submit" className="px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 bg-orange-600 hover:bg-orange-700 transition-colors duration-200 text-white rounded-sm font-dm-sans text-sm sm:text-base lg:text-base min-h-11">
-            Book a Slot
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            className="px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 bg-orange-600 hover:bg-orange-700 transition-colors duration-200 text-white rounded-sm font-dm-sans text-sm sm:text-base lg:text-base min-h-11 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? "Booking..." : "Book a Slot"}
           </button>
         </div>
         </form>

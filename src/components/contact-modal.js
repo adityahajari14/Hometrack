@@ -6,6 +6,7 @@ import ConfirmationModal from "./confirmation-modal";
 
 export default function ContactModal({ isOpen, onClose }) {
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -33,21 +34,45 @@ export default function ContactModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the contact data to your backend
-    console.log("Contact submitted:", formData);
-    
-    // Show confirmation modal
-    setShowConfirmation(true);
-    
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      message: ""
-    });
+    setIsSubmitting(true);
+
+    try {
+      // Create FormData and append Web3Forms access key
+      const formDataToSend = new FormData(e.target);
+      formDataToSend.append("access_key", "33ded777-8c16-4d6b-a904-1a586ffe112c");
+
+      // Submit to Web3Forms API
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Show confirmation modal on success
+        setShowConfirmation(true);
+        
+        // Reset form
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          message: ""
+        });
+      } else {
+        // Handle error
+        console.error("Form submission error:", data);
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const modalContent = (
@@ -81,6 +106,7 @@ export default function ContactModal({ isOpen, onClose }) {
               <h3 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg mb-2">Full Name</h3>
               <input
                 type="text"
+                name="name"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 required
@@ -92,6 +118,7 @@ export default function ContactModal({ isOpen, onClose }) {
               <h3 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg mb-2">Email</h3>
               <input
                 type="email"
+                name="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
@@ -105,6 +132,7 @@ export default function ContactModal({ isOpen, onClose }) {
             <h3 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg mb-2">Phone Number</h3>
             <input
               type="tel"
+              name="phone"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               required
@@ -117,6 +145,7 @@ export default function ContactModal({ isOpen, onClose }) {
             <h3 className="text-white font-dm-sans text-sm sm:text-base lg:text-lg mb-2">Message</h3>
             <textarea
               rows="4"
+              name="message"
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               required
@@ -126,8 +155,12 @@ export default function ContactModal({ isOpen, onClose }) {
           </div>
 
         <div className="mt-6 sm:mt-8">
-          <button type="submit" className="px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 bg-orange-600 hover:bg-orange-700 transition-colors duration-200 text-white rounded-sm font-dm-sans text-sm sm:text-base lg:text-base min-h-11">
-            Send Message
+          <button 
+            type="submit" 
+            disabled={isSubmitting}
+            className="px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 bg-orange-600 hover:bg-orange-700 transition-colors duration-200 text-white rounded-sm font-dm-sans text-sm sm:text-base lg:text-base min-h-11 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? "Sending..." : "Send Message"}
           </button>
         </div>
         </form>

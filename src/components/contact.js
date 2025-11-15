@@ -7,26 +7,45 @@ import ConfirmationModal from "./confirmation-modal";
 
 export default function ContactCard() {
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     message: ""
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
-    
-    // Show confirmation modal
-    setShowConfirmation(true);
-    
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      message: ""
-    });
+    setIsSubmitting(true);
+
+    try {
+      const formDataToSend = new FormData(e.target);
+      formDataToSend.append("access_key", "402b6abc-3fe1-4a11-a3dc-7bd9b7cba865");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setShowConfirmation(true);
+        setFormData({
+          fullName: "",
+          email: "",
+          message: ""
+        });
+      } else {
+        console.error("Form submission error:", data);
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      alert("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -125,6 +144,7 @@ export default function ContactCard() {
                 </label>
                 <input
                   type="text"
+                  name="name"
                   placeholder="John Doe"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
@@ -139,6 +159,7 @@ export default function ContactCard() {
                 </label>
                 <input
                   type="email"
+                  name="email"
                   placeholder="example@gmail.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -152,6 +173,7 @@ export default function ContactCard() {
                   Message
                 </label>
                 <textarea
+                  name="message"
                   placeholder="Write your message.."
                   rows={4}
                   value={formData.message}
@@ -162,7 +184,13 @@ export default function ContactCard() {
               </div>
 
               <div className="flex justify-start sm:justify-end mt-2 sm:mt-4 lg:mt-6">
-                <Button label="Send Message" type="submit" />
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 bg-orange-600 hover:bg-orange-700 transition-colors duration-200 text-white rounded-sm font-dm-sans text-sm sm:text-base min-h-11 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
               </div>
             </form>
           </div>

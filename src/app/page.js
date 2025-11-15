@@ -62,7 +62,7 @@ export default function Home() {
                 Total Assets
               </h2>
               <h1 className="text-white text-xl sm:text-2xl lg:text-4xl mt-2 sm:mt-3 lg:mt-4 wrap-break-word font-manrope font-light">
-                $<AnimatedCounter end={24} suffix=" Billion" duration={2500} />
+                $<AnimatedCounter end={30} suffix=" Million +" duration={2500} />
               </h1>
             </div>
             <hr className="border-t border-gray-600 mx-0 sm:mx-2" />
@@ -72,17 +72,7 @@ export default function Home() {
                 Countries
               </h2>
               <h1 className="text-white text-xl sm:text-2xl lg:text-4xl mt-2 sm:mt-3 lg:mt-4 font-manrope font-light">
-                <AnimatedCounter end={10} duration={2000} />
-              </h1>
-            </div>
-            <hr className="border-t border-gray-600 mx-0 sm:mx-2" />
-
-            <div>
-              <h2 className="text-orange-600 text-lg sm:text-xl lg:text-2xl font-manrope font-medium">
-                Assets
-              </h2>
-              <h1 className="text-white text-xl sm:text-2xl lg:text-4xl mt-2 sm:mt-3 lg:mt-4 font-manrope font-light">
-                <AnimatedCounter end={22} duration={2000} />
+                <AnimatedCounter end={5} duration={2000} />
               </h1>
             </div>
           </div>
