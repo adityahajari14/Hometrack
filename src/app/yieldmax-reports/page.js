@@ -47,7 +47,10 @@ export default function YieldMaxReports() {
       featureCards={featureCards}
 
       // Video Section
-      showVideoSection={false}
+      showVideoSection={true}
+      videoBackgroundImage="/video-background.jpg"
+      videoDescription="From first conversation to final delivery, our process is built on transparency, creativity, and precision. We listen closely, plan strategically, and execute with craftsmanship — ensuring every project reflects your vision and delivers lasting impact."
+      videoUrl="https://www.youtube.com/watch?v=ELJYn6OKYoI"
     />
   );
 }

@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className="bg-black text-white overflow-x-hidden font-dm-sans">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-20 py-12 lg:py-16 flex flex-col gap-8">
 
-        <div className="w-40 h-auto sm:w-44 lg:w-48 relative shrink-0 mx-auto sm:mx-0">
+        <Link href="/" className="w-40 h-auto sm:w-44 lg:w-48 relative shrink-0 mx-auto sm:mx-0">
           <Image
             src="/logo.svg"
             alt="Home Track Logo"
@@ -22,7 +22,7 @@ export default function Footer() {
             height={300}
             width={300}
           />
-        </div>
+        </Link>
          
         <div className="h-0 w-full border-[0.75px] border-white opacity-20" />
 

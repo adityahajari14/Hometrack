@@ -94,7 +94,7 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
           {/* Logo + Menu */}
           <div className="flex items-center gap-4 lg:gap-16">
             {/* Logo */}
-            <div className="w-[160px] sm:w-[170px] lg:w-[201px] h-auto relative shrink-0">
+            <Link href="/" className="w-[160px] sm:w-[170px] lg:w-[201px] h-auto relative shrink-0">
               <Image 
                 src="/logo.svg" 
                 alt="Home Track Logo" 
@@ -102,7 +102,7 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
                 height={43} 
                 className="w-full h-auto object-contain" 
               />
-            </div>
+            </Link>
             
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center gap-6 xl:gap-8">

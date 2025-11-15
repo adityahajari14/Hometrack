@@ -34,6 +34,7 @@ export default function RiskProfilingAndAssessments() {
       // Video Section
       videoBackgroundImage="/video-background.jpg"
       videoDescription="From first conversation to final delivery, our process is built on transparency, creativity, and precision. We listen closely, plan strategically, and execute with craftsmanship — ensuring every project reflects your vision and delivers lasting impact."
+      videoUrl="https://www.youtube.com/watch?v=pdBBuWAvEsI"
     />
   );
 }
