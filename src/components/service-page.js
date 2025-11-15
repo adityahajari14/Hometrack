@@ -196,9 +196,9 @@ export default function ServicePage({
               </h2>
               
               {/* Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+              <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-row gap-4 sm:gap-5 lg:gap-6">
                 {featureCards.map((card, index) => (
-                  <div key={index} className="scale-in-repeat bg-[#0b0b0b] border border-[#373737] p-4 sm:p-5 lg:p-6 rounded-md">
+                  <div key={index} className="scale-in-repeat bg-[#0b0b0b] border border-[#373737] p-4 sm:p-5 lg:p-6 rounded-md flex-1">
                     <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
                       <div className="w-[42px] h-[42px] relative shrink-0">
                         <Image
@@ -230,7 +230,7 @@ export default function ServicePage({
         {/* Video Section - How We Make It Happen */}
         {showVideoSection && videoBackgroundImage && (
           <section className="mb-16 sm:mb-20 lg:mb-24 max-w-[1356px]">
-            <div className="scale-in-repeat relative w-full h-64 sm:h-96 lg:h-[564px] rounded-md overflow-hidden">
+            <div className="scale-in-repeat relative w-full h-[280px] sm:h-96 lg:h-[564px] rounded-md overflow-hidden">
               {!isVideoPlaying ? (
                 <>
                   {/* Background Image */}
@@ -245,27 +245,28 @@ export default function ServicePage({
                   <div className="absolute left-4 sm:left-6 lg:left-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-32 lg:top-[297px] lg:bottom-auto z-10">
                     <button 
                       onClick={handleVideoPlay}
-                      className="flex items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-sm border border-gray-400 px-2 py-2 sm:px-3 sm:py-3 rounded hover:bg-white/20 transition-colors"
+                      className="flex items-center gap-1.5 sm:gap-2 lg:gap-3 bg-white/10 backdrop-blur-sm border border-gray-400 px-2 py-1.5 sm:px-3 sm:py-2 lg:py-3 rounded hover:bg-white/20 transition-colors"
                     >
                       <Image
                         src={videoPlayIcon}
                         alt="Play"
-                        width={19}
-                        height={19}
+                        width={16}
+                        height={16}
+                        className="w-4 h-4 sm:w-[19px] sm:h-[19px]"
                       />
-                      <span className="font-manrope font-medium text-white text-sm sm:text-base">
+                      <span className="font-manrope font-medium text-white text-xs sm:text-sm lg:text-base">
                         {videoButtonText}
                       </span>
                     </button>
                   </div>
 
                   {/* Text Content Overlay */}
-                  <div className="absolute left-4 sm:left-6 lg:left-10 bottom-6 sm:bottom-8 lg:bottom-12 max-w-full sm:max-w-[600px] lg:max-w-[908px] z-10 pr-4 sm:pr-6">
-                    <div className="flex flex-col gap-2 sm:gap-3 lg:gap-3.5 text-white">
-                      <h2 className="font-noto-sans font-semibold text-xl sm:text-2xl lg:text-[32px] leading-tight sm:leading-normal">
+                  <div className="absolute left-4 sm:left-6 lg:left-10 bottom-4 sm:bottom-8 lg:bottom-12 max-w-[calc(100%-2rem)] sm:max-w-[600px] lg:max-w-[908px] z-10 pr-4 sm:pr-6">
+                    <div className="flex flex-col gap-1.5 sm:gap-2 lg:gap-3.5 text-white">
+                      <h2 className="font-noto-sans font-semibold text-lg sm:text-2xl lg:text-[32px] leading-tight sm:leading-normal">
                         {videoTitle}
                       </h2>
-                      <p className="font-dm-sans text-sm sm:text-base lg:text-xl leading-relaxed">
+                      <p className="font-dm-sans text-xs sm:text-base lg:text-xl leading-relaxed line-clamp-3 sm:line-clamp-none">
                         {videoDescription}
                       </p>
                     </div>
@@ -277,9 +278,9 @@ export default function ServicePage({
                   {/* Close Button */}
                   <button
                     onClick={() => setIsVideoPlaying(false)}
-                    className="absolute top-4 right-4 z-20 text-white hover:text-orange-600 transition-colors bg-black/50 rounded-full p-2 backdrop-blur-sm"
+                    className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 text-white hover:text-orange-600 transition-colors bg-black/50 rounded-full p-1.5 sm:p-2 backdrop-blur-sm min-h-0!"
                   >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>

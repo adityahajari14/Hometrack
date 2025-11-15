@@ -24,8 +24,8 @@ const TestimonialSection = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             <TestimonialCard
-              name="Lorem Ipsum"
-              feedback="Donec auctor ligula sit amet mauris tincidunt, et viverra libero congue. Morbi vehicula interdum felis, non euismod felis auctor non. Phasellus facilisis urna ut metus mollis, a sollicitudin libero suscipit."
+              name="Marina Petrova"
+              feedback="Incredible professionalism and fast service. They truly understood what I needed and delivered quickly."
               imageurl="/person.webp"
             />
             <TestimonialCard
