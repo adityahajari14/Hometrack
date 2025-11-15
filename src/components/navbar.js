@@ -94,7 +94,7 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
           {/* Logo + Menu */}
           <div className="flex items-center gap-4 lg:gap-16">
             {/* Logo */}
-            <Link href="/" className="w-[160px] sm:w-[170px] lg:w-[201px] h-auto relative shrink-0">
+            <Link href="/" className="w-[160px] sm:w-[170px] lg:w-[201px] h-auto relative shrink-0 flex justify-center items-center">
               <Image 
                 src="/logo.svg" 
                 alt="Home Track Logo" 
@@ -197,22 +197,32 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
             {/* Mobile: Dropdown or Compact List */}
             <nav className="lg:hidden">
-              <select 
-                className="w-full bg-black/50 text-white border border-gray-700 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-600"
-                onChange={(e) => {
-                  if (e.target.value) {
-                    window.location.href = e.target.value;
-                  }
-                }}
-                value={secondaryNavItems.find(item => item.text === activeSecondaryItem)?.href || ''}
-              >
-                <option value="">Select a Service</option>
-                {secondaryNavItems.map((item) => (
-                  <option key={item.text} value={item.href}>
-                    {item.text}
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select 
+                  className="w-full bg-black/50 text-white border border-gray-700 rounded-md px-3 py-2.5 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-orange-600 appearance-none"
+                  onChange={(e) => {
+                    if (e.target.value) {
+                      window.location.href = e.target.value;
+                    }
+                  }}
+                  value={secondaryNavItems.find(item => item.text === activeSecondaryItem)?.href || ''}
+                >
+                  <option value="">Select a Service</option>
+                  {secondaryNavItems.map((item) => (
+                    <option key={item.text} value={item.href}>
+                      {item.text}
+                    </option>
+                  ))}
+                </select>
+                <svg 
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white pointer-events-none" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
             </nav>
             
             {/* Desktop: Horizontal Scroll */}
