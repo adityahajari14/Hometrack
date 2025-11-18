@@ -102,7 +102,7 @@ export default function ContactCard() {
                       className="shrink-0 mt-1"
                     />
                     <p className="font-dm-sans text-xs sm:text-sm lg:text-base max-w-[288px]">
-                      Office 31, 3rd Floor The Convention Tower, The World Trade Center, Dubai, UAE
+                      Level 25, The Harbour Tower, Dubai, Office Tower, One Sheikh Zayed, Dubai
                     </p>
                   </div>
                 </div>
