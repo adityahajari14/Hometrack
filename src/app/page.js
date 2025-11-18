@@ -59,7 +59,7 @@ export default function Home() {
           <div className="scale-in-repeat flex flex-col gap-4 sm:gap-6 lg:gap-8 w-full lg:w-1/2">
             <div>
               <h2 className="text-orange-600 text-lg sm:text-xl lg:text-2xl font-manrope font-medium">
-                Total Revnue
+                Total Revenue
               </h2>
               <h1 className="text-white text-xl sm:text-2xl lg:text-4xl mt-2 sm:mt-3 lg:mt-4 wrap-break-word font-manrope font-light">
                 AED <AnimatedCounter end={30} suffix=" Million +" duration={2500} />
