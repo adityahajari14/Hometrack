@@ -29,6 +29,44 @@ export default function Home() {
     }
   ];
 
+  // const teamMembers = [
+  //   {
+  //     id: 1,
+  //     name: "Mustafa Aziz",
+  //     designation: "Founder & CEO",
+  //     image: "/home/team/mustafa-aziz.png",
+  //     row: 1
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Sunita Rajwani",
+  //     designation: "Senior Property Consultant",
+  //     image: "/home/team/sunita-rajwani.png",
+  //     row: 1
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Ruby Kaur",
+  //     designation: "Property Advisor",
+  //     image: "/home/team/ruby-kaur.png",
+  //     row: 1
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Hamdan Rizvi",
+  //     designation: "Sr. Business Development Manager",
+  //     image: "/home/team/hamdan-rizvi.webp",
+  //     row: 2
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Ahmed Khan",
+  //     designation: "Operations Manager",
+  //     image: "/home/team/ahmed-khan.png",
+  //     row: 2
+  //   }
+  // ];
+
 
 
   return (
@@ -173,7 +211,7 @@ export default function Home() {
             <div className="scale-in-repeat w-full flex justify-center lg:hidden">
               <div className="relative w-[90%] aspect-4/5">
                 <Image
-                  src="/home/founder.webp"
+                  src="/home/founder.jpg"
                   alt="Founder"
                   fill
                   className="object-cover rounded-lg"
@@ -208,7 +246,7 @@ export default function Home() {
           <div className="scale-in-repeat w-full lg:w-1/2 justify-center px-0 sm:px-4 hidden lg:flex">
             <div className="relative w-[90%] aspect-4/5">
               <Image
-                src="/home/founder.webp"
+                src="/home/founder.jpg"
                 alt="Founder"
                 fill
                 className="object-cover rounded-lg"
@@ -254,12 +292,90 @@ export default function Home() {
               </div>
             ))}
           </div>
+
           <div className="scale-in-repeat flex w-full p-4 sm:p-5 bg-[#242424] flex-col justify-center items-start gap-2">
             <div className="text-lg sm:text-xl font-dm-sans font-semibold">Disclaimer</div>
             <div className="text-sm sm:text-base lg:text-lg font-dm-sans text-[#ACACAC] leading-relaxed">Home Track Real Estate LLC is regulated by RERA (Real Estate Regulatory Agency) RERA # 34715, Trade License # 1167110 in Dubai. We confirm that we are not a wealth management company but we are a Dubai based real estate brokers, that takes wealth management approach and advise clients in real estate.</div>
           </div>
         </div>
         </section>
+
+        {/* Meet our Team Section
+        <section
+          className="bg-[#020202] py-8 sm:py-12 md:py-16 lg:py-20 w-full overflow-x-hidden"
+          id="team"
+        >
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
+            <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
+              <h2 className="animate-on-scroll slide-in-left text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-left font-noto-sans leading-tight">
+                Meet our <span className="text-orange-600 font-semibold">Team</span>
+              </h2>
+              <p className="scale-in-repeat text-xs sm:text-sm md:text-base lg:text-lg font-dm-sans text-white leading-relaxed">
+                Delivering expert guidance In Buying, Selling, And Investing.
+              </p>
+            </div>
+
+            <div className="scale-in-repeat flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+             
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+                {teamMembers
+                  .filter(member => member.row === 1)
+                  .map((member) => (
+                    <div key={member.id} className="flex flex-col gap-0 w-full items-center">
+                      <div className="relative w-full max-w-[280px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[280px] aspect-[3/4] mb-0 mx-auto">
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
+                          className="object-cover grayscale"
+                          sizes="(max-width: 640px) 280px, (max-width: 1024px) 300px, 280px"
+                        />
+                      </div>
+                      <div className="bg-[#ff5810] px-3 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-4 w-full max-w-[280px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[280px] mx-auto">
+                        <p className="text-white font-dm-sans font-medium text-sm sm:text-base md:text-lg">
+                          {member.name}
+                        </p>
+                        <p className="text-white font-dm-sans text-xs sm:text-sm md:text-base">
+                          {member.designation}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+
+             
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+                <div className="hidden lg:block"></div>
+                
+                {teamMembers
+                  .filter(member => member.row === 2)
+                  .map((member) => (
+                    <div key={member.id} className="flex flex-col gap-0 w-full items-center">
+                      <div className="relative w-full max-w-[280px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[280px] aspect-[3/4] mb-0 mx-auto">
+                        <Image
+                          src={member.image}
+                          alt={member.name}
+                          fill
+                          className="object-cover grayscale"
+                          sizes="(max-width: 640px) 280px, (max-width: 1024px) 300px, 280px"
+                        />
+                      </div>
+                      <div className="bg-[#ff5810] px-3 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-4 w-full max-w-[280px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[280px] mx-auto">
+                        <p className="text-white font-dm-sans font-medium text-sm sm:text-base md:text-lg">
+                          {member.name}
+                        </p>
+                        <p className="text-white font-dm-sans text-xs sm:text-sm md:text-base">
+                          {member.designation}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+
+                <div className="hidden lg:block"></div>
+              </div>
+            </div>
+          </div>
+        </section> */}
 
         <section
           className="bg-[#020202] w-full overflow-x-hidden"
