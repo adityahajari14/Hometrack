@@ -29,43 +29,43 @@ export default function Home() {
     }
   ];
 
-  // const teamMembers = [
-  //   {
-  //     id: 1,
-  //     name: "Mustafa Aziz",
-  //     designation: "Founder & CEO",
-  //     image: "/home/team/mustafa-aziz.png",
-  //     row: 1
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Sunita Rajwani",
-  //     designation: "Senior Property Consultant",
-  //     image: "/home/team/sunita-rajwani.png",
-  //     row: 1
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Ruby Kaur",
-  //     designation: "Property Advisor",
-  //     image: "/home/team/ruby-kaur.png",
-  //     row: 1
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Hamdan Rizvi",
-  //     designation: "Sr. Business Development Manager",
-  //     image: "/home/team/hamdan-rizvi.webp",
-  //     row: 2
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Ahmed Khan",
-  //     designation: "Operations Manager",
-  //     image: "/home/team/ahmed-khan.png",
-  //     row: 2
-  //   }
-  // ];
+  const teamMembers = [
+    {
+      id: 1,
+      name: "Mustafa Aziz",
+      designation: "Founder & CEO",
+      image: "/home/team/mustafa-aziz.webp",
+      row: 1
+    },
+    {
+      id: 2,
+      name: "Sunita Rajwani",
+      designation: "Senior Property Consultant",
+      image: "/home/team/sunita-rajwani.webp",
+      row: 1
+    },
+    {
+      id: 3,
+      name: "Ruby Kaur",
+      designation: "Property Advisor",
+      image: "/home/team/ruby-kaur.webp",
+      row: 1
+    },
+    {
+      id: 4,
+      name: "Hamdan Rizvi",
+      designation: "Sr. Business Development Manager",
+      image: "/home/team/hamdan-rizvi.webp",
+      row: 2
+    },
+    {
+      id: 5,
+      name: "Ahmed Khan",
+      designation: "Operations Manager",
+      image: "/home/team/ahmed-khan.webp",
+      row: 2
+    }
+  ];
 
 
 
@@ -300,42 +300,42 @@ export default function Home() {
         </div>
         </section>
 
-        {/* Meet our Team Section
+        {/* Meet our Team Section */}
         <section
           className="bg-[#020202] py-8 sm:py-12 md:py-16 lg:py-20 w-full overflow-x-hidden"
           id="team"
         >
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-20">
             <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 lg:gap-6 mb-6 sm:mb-8 md:mb-10 lg:mb-12">
-              <h2 className="animate-on-scroll slide-in-left text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-left font-noto-sans leading-tight">
+              <h2 className="animate-on-scroll slide-in-left text-2xl sm:text-3xl font-medium text-left font-noto-sans leading-tight">
                 Meet our <span className="text-orange-600 font-semibold">Team</span>
               </h2>
-              <p className="scale-in-repeat text-xs sm:text-sm md:text-base lg:text-lg font-dm-sans text-white leading-relaxed">
+              <p className="scale-in-repeat text-sm sm:text-sm md:text-base lg:text-lg font-dm-sans text-white leading-relaxed">
                 Delivering expert guidance In Buying, Selling, And Investing.
               </p>
             </div>
 
-            <div className="scale-in-repeat flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+            <div className="scale-in-repeat flex flex-col gap-6 sm:gap-8 md:gap-10 lg:gap-12">
              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 {teamMembers
                   .filter(member => member.row === 1)
                   .map((member) => (
-                    <div key={member.id} className="flex flex-col gap-0 w-full items-center">
-                      <div className="relative w-full max-w-[280px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[280px] aspect-[3/4] mb-0 mx-auto">
+                    <div key={member.id} className="flex flex-col w-full items-center gap-0">
+                      <div className="relative w-[55%] sm:w-[65%] md:w-[60%] aspect-3/4 bg-black">
                         <Image
                           src={member.image}
                           alt={member.name}
                           fill
-                          className="object-cover grayscale"
-                          sizes="(max-width: 640px) 280px, (max-width: 1024px) 300px, 280px"
+                          className="object-cover object-top grayscale"
+                          sizes="(max-width: 640px) 55vw, (max-width: 768px) 32.5vw, (max-width: 1024px) 30vw, 20vw"
                         />
                       </div>
-                      <div className="bg-[#ff5810] px-3 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-4 w-full max-w-[280px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[280px] mx-auto">
-                        <p className="text-white font-dm-sans font-medium text-sm sm:text-base md:text-lg">
+                      <div className="bg-[#ff5810] px-3 py-2 sm:px-4 sm:py-3 md:px-5 md:py-4 w-[65%] sm:w-full text-center">
+                        <p className="text-white font-dm-sans font-medium text-xs sm:text-sm md:text-base lg:text-lg">
                           {member.name}
                         </p>
-                        <p className="text-white font-dm-sans text-xs sm:text-sm md:text-base">
+                        <p className="text-white font-dm-sans text-[10px] sm:text-xs md:text-sm lg:text-base">
                           {member.designation}
                         </p>
                       </div>
@@ -344,38 +344,36 @@ export default function Home() {
               </div>
 
              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-                <div className="hidden lg:block"></div>
-                
-                {teamMembers
-                  .filter(member => member.row === 2)
-                  .map((member) => (
-                    <div key={member.id} className="flex flex-col gap-0 w-full items-center">
-                      <div className="relative w-full max-w-[280px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[280px] aspect-[3/4] mb-0 mx-auto">
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          className="object-cover grayscale"
-                          sizes="(max-width: 640px) 280px, (max-width: 1024px) 300px, 280px"
-                        />
+              <div className="flex justify-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 w-full sm:w-[85%] md:w-[75%] lg:w-[65%]">
+                  {teamMembers
+                    .filter(member => member.row === 2)
+                    .map((member) => (
+                      <div key={member.id} className="flex flex-col w-full items-center gap-0">
+                        <div className="relative w-[55%] sm:w-[65%] md:w-[60%] aspect-3/4 bg-black">
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            className="object-cover object-top grayscale"
+                            sizes="(max-width: 640px) 55vw, (max-width: 768px) 32.5vw, (max-width: 1024px) 30vw, 20vw"
+                          />
+                        </div>
+                        <div className="bg-[#ff5810] px-3 py-2 sm:px-4 sm:py-3 md:px-5 md:py-4 w-[65%] sm:w-full text-center">
+                          <p className="text-white font-dm-sans font-medium text-xs sm:text-sm md:text-base lg:text-lg">
+                            {member.name}
+                          </p>
+                          <p className="text-white font-dm-sans text-[10px] sm:text-xs md:text-sm lg:text-base">
+                            {member.designation}
+                          </p>
+                        </div>
                       </div>
-                      <div className="bg-[#ff5810] px-3 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-4 w-full max-w-[280px] sm:max-w-[300px] md:max-w-[320px] lg:max-w-[280px] mx-auto">
-                        <p className="text-white font-dm-sans font-medium text-sm sm:text-base md:text-lg">
-                          {member.name}
-                        </p>
-                        <p className="text-white font-dm-sans text-xs sm:text-sm md:text-base">
-                          {member.designation}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-
-                <div className="hidden lg:block"></div>
+                    ))}
+                </div>
               </div>
             </div>
           </div>
-        </section> */}
+        </section>
 
         <section
           className="bg-[#020202] w-full overflow-x-hidden"
