@@ -34,35 +34,35 @@ export default function Home() {
       id: 1,
       name: "Mustafa Aziz",
       designation: "Founder & CEO",
-      image: "/home/team/mustafa-aziz.webp",
+      image: "/home/team/mustafa-aziz.png",
       row: 1
     },
     {
       id: 2,
       name: "Sunita Rajwani",
       designation: "Senior Property Consultant",
-      image: "/home/team/sunita-rajwani.webp",
+      image: "/home/team/sunita-rajwani.png",
       row: 1
     },
     {
       id: 3,
       name: "Ruby Kaur",
       designation: "Property Advisor",
-      image: "/home/team/ruby-kaur.webp",
+      image: "/home/team/ruby-kaur.png",
       row: 1
     },
     {
       id: 4,
       name: "Hamdan Rizvi",
       designation: "Sr. Business Development Manager",
-      image: "/home/team/hamdan-rizvi.webp",
+      image: "/home/team/hamdan-rizvi.png",
       row: 2
     },
     {
       id: 5,
       name: "Ahmed Khan",
       designation: "Operations Manager",
-      image: "/home/team/ahmed-khan.webp",
+      image: "/home/team/ahmed-khan.png",
       row: 2
     }
   ];
@@ -322,7 +322,7 @@ export default function Home() {
                   .filter(member => member.row === 1)
                   .map((member) => (
                     <div key={member.id} className="flex flex-col w-full items-center gap-0">
-                      <div className="relative w-[55%] sm:w-[65%] md:w-[60%] aspect-3/4 bg-black">
+                      <div className="relative w-[80%] aspect-square">
                         <Image
                           src={member.image}
                           alt={member.name}
@@ -350,7 +350,7 @@ export default function Home() {
                     .filter(member => member.row === 2)
                     .map((member) => (
                       <div key={member.id} className="flex flex-col w-full items-center gap-0">
-                        <div className="relative w-[55%] sm:w-[65%] md:w-[60%] aspect-3/4 bg-black">
+                        <div className="relative w-[80%] aspect-square">
                           <Image
                             src={member.image}
                             alt={member.name}
