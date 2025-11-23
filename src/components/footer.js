@@ -31,7 +31,7 @@ export default function Footer() {
             <div className="gap-2">
               <h3 className="text-base sm:text-lg font-medium mb-3">Address</h3>
               <p className="text-sm sm:text-base text-white/60 leading-relaxed">
-                Level 25, The Harbour Tower, One Sheikh Zayed, Dubai
+              Level 25, The H Dubai, Office Tower, One Sheikh Zayed, Dubai
               </p>
             </div>
           </div>
