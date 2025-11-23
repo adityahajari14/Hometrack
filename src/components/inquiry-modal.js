@@ -111,7 +111,7 @@ export default function InquiryModal({ isOpen, onClose, propertyId, propertyTitl
           {/* Status Messages */}
           {submitStatus === 'success' && (
             <div className="mb-6 p-4 bg-green-500/10 border border-green-500 rounded text-green-500">
-              Thank you! Your inquiry has been submitted successfully. We'll get back to you soon.
+              Thank you! Your inquiry has been submitted successfully. We&apos;ll get back to you soon.
             </div>
           )}
 

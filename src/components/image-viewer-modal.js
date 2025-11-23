@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import Image from 'next/image'
 
@@ -9,7 +9,6 @@ export default function ImageViewerModal({ isOpen, onClose, images, initialIndex
 
   useEffect(() => {
     if (isOpen) {
-      setCurrentIndex(initialIndex)
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'unset'
@@ -18,7 +17,21 @@ export default function ImageViewerModal({ isOpen, onClose, images, initialIndex
     return () => {
       document.body.style.overflow = 'unset'
     }
+  }, [isOpen])
+
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentIndex(initialIndex)
+    }
   }, [isOpen, initialIndex])
+
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % images.length)
+  }, [images.length])
+
+  const handlePrevious = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
+  }, [images.length])
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -40,15 +53,7 @@ export default function ImageViewerModal({ isOpen, onClose, images, initialIndex
       document.removeEventListener('keydown', handleEscape)
       document.removeEventListener('keydown', handleArrowKeys)
     }
-  }, [isOpen, currentIndex])
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length)
-  }
-
-  const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
-  }
+  }, [isOpen, handleNext, handlePrevious, onClose])
 
   if (!isOpen) return null
 

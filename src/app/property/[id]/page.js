@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -29,11 +29,7 @@ export default function PropertyDetailPage() {
   const [isAmenitiesModalOpen, setIsAmenitiesModalOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState(0)
 
-  useEffect(() => {
-    loadProperty()
-  }, [id])
-
-  const loadProperty = async () => {
+  const loadProperty = useCallback(async () => {
     setIsLoading(true)
     const result = await getPropertyById(id)
     
@@ -48,7 +44,11 @@ export default function PropertyDetailPage() {
     }
     
     setIsLoading(false)
-  }
+  }, [id])
+
+  useEffect(() => {
+    loadProperty()
+  }, [loadProperty])
 
   if (!property && !isLoading) {
     return (

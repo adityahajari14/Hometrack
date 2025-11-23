@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { getProperties } from '@/app/actions/properties'
 import PropertyCard from '@/components/property-card'
 import PortfolioFilters from '@/components/portfolio-filters'
@@ -15,18 +15,18 @@ export default function PortfolioPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [filters, setFilters] = useState({})
 
-  useEffect(() => {
-    loadProperties()
-  }, [filters])
-
-  const loadProperties = async () => {
+  const loadProperties = useCallback(async () => {
     setIsLoading(true)
     const result = await getProperties(filters)
     if (result.success) {
       setProperties(result.data)
     }
     setIsLoading(false)
-  }
+  }, [filters])
+
+  useEffect(() => {
+    loadProperties()
+  }, [loadProperties])
 
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters)
