@@ -71,7 +71,7 @@ export default function PropertyDetailPage() {
     <>
       <Navbar />
       <AnimationWrapper>
-        <main className="bg-[#020202] text-white overflow-x-hidden pt-20 sm:pt-24 md:pt-28">
+        <main className="bg-[#020202] text-white overflow-x-hidden pt-10">
 
         {/* Property Details Section */}
         <section 
@@ -93,7 +93,7 @@ export default function PropertyDetailPage() {
             {/* Main Content */}
             <div className="flex flex-col lg:flex-row items-start gap-6 sm:gap-8 lg:gap-10 xl:gap-12 mb-8 sm:mb-10 lg:mb-12">
               {/* Left: Property Info */}
-              <div className="scale-in-repeat flex flex-col gap-6 sm:gap-7 lg:gap-8 w-full lg:w-[500px] xl:w-[550px] shrink-0 order-2 lg:order-1">
+              <div className="scale-in-repeat flex flex-col gap-6 sm:gap-7 lg:gap-8 w-full lg:flex-1 lg:max-w-[550px] order-2 lg:order-1">
                 <div className="flex flex-col gap-5 sm:gap-6 lg:gap-7">
                   <div className="flex flex-col gap-4 sm:gap-5">
                     {/* Category Badge */}
@@ -107,7 +107,7 @@ export default function PropertyDetailPage() {
                     <div className="flex flex-col gap-3 sm:gap-4">
                       <div className="flex flex-col gap-2 sm:gap-3">
                         <div className="flex flex-col gap-1 sm:gap-1.5">
-                          <h1 className="animate-on-scroll slide-in-left text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight text-white">
+                          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold leading-tight text-white">
                             {property.title}
                           </h1>
                           <p className="text-white text-sm sm:text-base lg:text-lg xl:text-xl font-normal">
@@ -172,84 +172,144 @@ export default function PropertyDetailPage() {
                 </div>
 
                 {/* Enquire Button */}
-                <div className="flex flex-col">
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      e.stopPropagation()
-                      setIsModalOpen(true)
-                    }}
-                    className="w-full bg-[#ff5810] text-white text-sm sm:text-base lg:text-lg font-semibold px-5 sm:px-6 py-3 sm:py-3.5 rounded hover:bg-[#e64d0a] active:bg-[#d44509] transition-colors cursor-pointer min-h-11 touch-manipulation"
-                  >
-                    Enquire Now
-                  </button>
-                </div>
-              </div>
-
-              {/* Right: Image Gallery */}
-              <div className="scale-in-repeat flex flex-col lg:flex-row gap-2.5 sm:gap-3 w-full lg:w-auto lg:flex-1 order-1 lg:order-2 items-center lg:items-start">
-                {/* Main Image */}
                 <button
                   type="button"
                   onClick={(e) => {
                     e.preventDefault()
                     e.stopPropagation()
-                    setIsImageViewerOpen(true)
+                    setIsModalOpen(true)
                   }}
-                  className="relative w-full lg:flex-1 h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[420px] rounded-lg overflow-hidden bg-transparent cursor-pointer group touch-manipulation"
+                  className="w-full bg-[#ff5810] text-white text-sm sm:text-base lg:text-lg font-semibold px-5 sm:px-6 py-3 sm:py-3.5 rounded hover:bg-[#e64d0a] active:bg-[#d44509] transition-colors cursor-pointer min-h-11 touch-manipulation"
                 >
-                  <Image
-                    src={images[selectedImage]}
-                    alt={property.title}
-                    fill
-                    className="object-contain transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 700px"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 group-active:bg-black/20 transition-colors" />
+                  Enquire Now
                 </button>
+              </div>
 
-                {/* Thumbnails */}
-                <div className="flex lg:flex-col gap-2 sm:gap-2.5 w-auto lg:w-[90px] xl:w-[100px] lg:h-[400px] xl:lg:h-[420px] overflow-x-auto lg:overflow-y-auto scrollbar-hide p-1 justify-center lg:justify-start">
-                  {images.slice(0, 5).map((image, idx) => (
-                    <button
-                      type="button"
-                      key={idx}
+              {/* Right: Image Gallery */}
+              <div className="scale-in-repeat w-full lg:flex-1 order-1 lg:order-2">
+                <div className="flex flex-col lg:flex-row gap-3">
+                  {/* Main Image */}
+                  <div className="w-full lg:flex-1">
+                    <div 
                       onClick={(e) => {
                         e.preventDefault()
                         e.stopPropagation()
-                        if (idx === 4 && images.length > 5) {
-                          setIsImageViewerOpen(true)
-                        } else {
-                          setSelectedImage(idx)
-                        }
+                        setIsImageViewerOpen(true)
                       }}
-                      className="relative shrink-0 w-16 h-16 sm:w-20 sm:h-20 lg:w-full lg:flex-1 cursor-pointer transition-all touch-manipulation min-h-[64px] sm:min-h-[80px]"
+                      className="relative w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] xl:h-[420px] rounded-lg overflow-hidden cursor-pointer group"
                     >
-                      <div className={`relative w-full h-full rounded-md sm:rounded-lg transition-all ${
-                        selectedImage === idx ? 'ring-2 sm:ring-[3px] ring-[#ff5810]' : ''
-                      }`}>
-                        <div className="relative w-full h-full rounded-md sm:rounded-lg overflow-hidden">
-                          <Image
-                            src={image}
-                            alt={`${property.title} ${idx + 1}`}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 640px) 64px, (max-width: 1024px) 80px, 100px"
-                          />
-                          {selectedImage !== idx && (
-                            <div className="absolute inset-0 bg-black/50" />
-                          )}
-                          {idx === 4 && images.length > 5 && (
-                            <div className="absolute inset-0 bg-black/70 flex items-center justify-center cursor-pointer hover:bg-black/80 active:bg-black/90 transition-colors">
-                              <span className="text-white text-sm sm:text-base font-semibold">+{images.length - 5}</span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </button>
-                  ))}
+                      <Image
+                        src={images[selectedImage]}
+                        alt={property.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 700px"
+                        priority
+                      />
+                    </div>
+                  </div>
+
+                  {/* Thumbnails */}
+                  <div className="w-full lg:w-auto">
+                    {/* Mobile: Horizontal thumbnails */}
+                    <div className="flex lg:hidden items-center justify-center gap-2">
+                      {images.slice(0, 5).map((image, idx) => {
+                        const isSelected = selectedImage === idx
+                        const isLastWithMore = idx === 4 && images.length > 5 && !isSelected
+                        
+                        return (
+                          <div
+                            key={idx}
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              if (isLastWithMore) {
+                                setIsImageViewerOpen(true)
+                              } else {
+                                setSelectedImage(idx)
+                              }
+                            }}
+                            className={`
+                              relative shrink-0 cursor-pointer
+                              w-16 h-16 sm:w-[72px] sm:h-[72px] md:w-20 md:h-20
+                              rounded-md overflow-hidden
+                              transition-all duration-300
+                              ${isSelected 
+                                ? 'ring-2 ring-[#ff5810] ring-offset-2 ring-offset-[#020202] scale-105' 
+                                : 'opacity-70 hover:opacity-100 hover:scale-105'
+                              }
+                            `}
+                          >
+                            <Image
+                              src={image}
+                              alt={`Thumbnail ${idx + 1}`}
+                              fill
+                              className="object-cover"
+                              sizes="80px"
+                            />
+                            
+                            {isLastWithMore && (
+                              <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                                <span className="text-white text-sm font-semibold">
+                                  +{images.length - 5}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+
+                    {/* Desktop: Vertical thumbnails */}
+                    <div className="hidden lg:flex flex-col gap-2 h-[400px] xl:h-[420px]">
+                      {images.slice(0, 5).map((image, idx) => {
+                        const isSelected = selectedImage === idx
+                        const isLastWithMore = idx === 4 && images.length > 5 && !isSelected
+                        
+                        return (
+                          <div
+                            key={idx}
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              if (isLastWithMore) {
+                                setIsImageViewerOpen(true)
+                              } else {
+                                setSelectedImage(idx)
+                              }
+                            }}
+                            className={`
+                              relative shrink-0 cursor-pointer
+                              w-20 xl:w-[88px]
+                              flex-1 min-h-0
+                              rounded-md overflow-hidden
+                              transition-all duration-300
+                              ${isSelected 
+                                ? 'ring-2 ring-[#ff5810] ring-offset-2 ring-offset-[#020202] scale-105' 
+                                : 'opacity-70 hover:opacity-100 hover:scale-105'
+                              }
+                            `}
+                          >
+                            <Image
+                              src={image}
+                              alt={`Thumbnail ${idx + 1}`}
+                              fill
+                              className="object-cover"
+                              sizes="88px"
+                            />
+                            
+                            {isLastWithMore && (
+                              <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                                <span className="text-white text-sm font-semibold">
+                                  +{images.length - 5}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -260,7 +320,7 @@ export default function PropertyDetailPage() {
                 {property.developer && (
                   <div className="flex flex-col gap-1">
                     <span className="text-[#a5a5a5] text-xs sm:text-sm font-medium">Developer Name</span>
-                    <span className="text-white text-sm sm:text-base lg:text-lg font-medium break-words">{property.developer}</span>
+                    <span className="text-white text-sm sm:text-base lg:text-lg font-medium wrap-break-word">{property.developer}</span>
                   </div>
                 )}
                 {property.area && (
@@ -278,7 +338,7 @@ export default function PropertyDetailPage() {
                         <button
                           type="button"
                           onClick={() => setIsAmenitiesModalOpen(true)}
-                          className="text-orange-600 text-xs sm:text-sm hover:text-orange-700 active:text-orange-800 transition-colors cursor-pointer text-left touch-manipulation"
+                          className="text-[#ff5810] text-xs sm:text-sm hover:text-[#e64d0a] active:text-[#d44509] transition-colors cursor-pointer text-left touch-manipulation"
                         >
                           +{property.amenities.length - 2} more
                         </button>
@@ -316,7 +376,7 @@ export default function PropertyDetailPage() {
             {/* Related Properties */}
             {relatedProperties.length > 0 && (
               <div className="flex flex-col gap-3 sm:gap-4 mb-8 sm:mb-10">
-                <h2 className="animate-on-scroll slide-in-left text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-medium text-white">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-medium text-white">
                   Other Properties
                 </h2>
                 <div className="scale-in-repeat grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
