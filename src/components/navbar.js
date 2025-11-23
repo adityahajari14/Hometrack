@@ -3,21 +3,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Button from "./button";
 import ContactModal from "./contact-modal";
 
 export default function Navbar({ showSecondaryNav = false, activeSecondaryItem = "" }) {
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHomePage, setIsHomePage] = useState(false);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [currentHash, setCurrentHash] = useState('');
   
-  // Check if on home page
+  // Check if on home page and track hash changes
   useEffect(() => {
     // Defer setState to avoid synchronous call in effect
     setTimeout(() => {
       setIsHomePage(window.location.pathname === '/');
+      setCurrentHash(window.location.hash);
     }, 0);
+
+    // Listen for hash changes
+    const handleHashChange = () => {
+      setCurrentHash(window.location.hash);
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
   
   // Handle scroll detection
@@ -45,12 +57,22 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
   }, []);
   
   const navItems = [
-    { text: "Home", href: "/#home", active: true },
-    { text: "Insights Hub", href: "/#insights", active: false },
-    { text: "Services", href: "/#services", active: false },
-    { text: "Meet the Founder", href: "/#founder", active: false },
-    { text: "Our Values", href: "/#values", active: false }
+    { text: "Home", href: "/#home" },
+    { text: "Insights Hub", href: "/#insights" },
+    { text: "Services", href: "/#services" },
+    { text: "Meet the Founder", href: "/#founder" },
+    { text: "Our Values", href: "/#values" },
+    { text: "Portfolio", href: "/portfolio" }
   ];
+
+  // Determine if a nav item is active
+  const isActive = (href) => {
+    if (href.startsWith('/#')) {
+      // For hash links, check if we're on home page AND the hash matches
+      return pathname === '/' && currentHash === href.substring(1);
+    }
+    return pathname === href;
+  };
 
     const secondaryNavItems = [
     { text: "Property Wealth Advisory", href: "/property-wealth-advisory" },
@@ -83,7 +105,7 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50">
+    <div className="fixed top-0 left-0 right-0 z-[9999]">
       {/* Main Navigation */}
       <nav className={`w-full transition-all duration-300 ${
         isHomePage && !isScrolled 
@@ -112,7 +134,7 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
                   href={item.href} 
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={`font-dm-sans text-sm xl:text-base whitespace-nowrap transition-colors ${
-                    item.active 
+                    isActive(item.href)
                       ? "font-bold text-white" 
                       : "font-light text-white hover:font-normal"
                   }`}
@@ -168,7 +190,7 @@ export default function Navbar({ showSecondaryNav = false, activeSecondaryItem =
                   key={item.text} 
                   href={item.href} 
                   className={`font-dm-sans text-base whitespace-nowrap transition-colors py-2 min-h-11 flex items-center ${
-                    item.active 
+                    isActive(item.href)
                       ? "font-bold text-white" 
                       : "font-light text-gray-300 hover:text-white"
                   }`}
