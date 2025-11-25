@@ -15,6 +15,14 @@ export default function PortfolioPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [filters, setFilters] = useState({})
 
+  // Format price in k format
+  const formatPrice = (price) => {
+    if (price >= 1000) {
+      return `${(price / 1000).toFixed(0)}k`
+    }
+    return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  }
+
   const loadProperties = useCallback(async () => {
     setIsLoading(true)
     const result = await getProperties(filters)

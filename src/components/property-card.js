@@ -15,6 +15,14 @@ export default function PropertyCard({ property }) {
     listingType
   } = property
 
+  // Format price in k format
+  const formatPrice = (price) => {
+    if (price >= 1000) {
+      return `${(price / 1000).toFixed(0)}k`
+    }
+    return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  }
+
   // Truncate description with Read More link
   const truncatedDescription = description.length > 85 
     ? description.substring(0, 85) + '... ' 
@@ -85,7 +93,7 @@ export default function PropertyCard({ property }) {
 
           {/* Price */}
           <p className="text-white text-lg sm:text-xl lg:text-2xl font-semibold mt-3 sm:mt-4">
-            AED {price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}{listingType === 'rent' ? ' / year' : ''}
+            AED {formatPrice(price)}{listingType === 'rent' ? ' / year' : ''}
           </p>
         </div>
       </div>

@@ -29,6 +29,14 @@ export default function PropertyDetailPage() {
   const [isAmenitiesModalOpen, setIsAmenitiesModalOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState(0)
 
+  // Format price in k format
+  const formatPrice = (price) => {
+    if (price >= 1000) {
+      return `${(price / 1000).toFixed(0)}k`
+    }
+    return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  }
+
   const loadProperty = useCallback(async () => {
     setIsLoading(true)
     const result = await getPropertyById(id)
@@ -167,7 +175,7 @@ export default function PropertyDetailPage() {
 
                   {/* Price */}
                   <p className="text-white text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-semibold">
-                    AED {property.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}{property.listingType === 'rent' ? ' / year' : ''}
+                    AED {formatPrice(property.price)}{property.listingType === 'rent' ? ' / year' : ''}
                   </p>
                 </div>
 
