@@ -32,7 +32,8 @@ export default function PropertyDetailPage() {
   // Format price in k format
   const formatPrice = (price) => {
     if (price >= 1000) {
-      return `${(price / 1000).toFixed(0)}k`
+      const kValue = (price / 1000).toFixed(0)
+      return `${parseInt(kValue).toLocaleString('en-US')}k`
     }
     return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
   }
