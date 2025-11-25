@@ -29,11 +29,17 @@ export default function PropertyDetailPage() {
   const [isAmenitiesModalOpen, setIsAmenitiesModalOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState(0)
 
-  // Format price in k format
+  // Format price in K, M, B format
   const formatPrice = (price) => {
-    if (price >= 1000) {
+    if (price >= 1000000000) {
+      const bValue = (price / 1000000000).toFixed(2)
+      return `${parseFloat(bValue).toLocaleString('en-US')}B`
+    } else if (price >= 1000000) {
+      const mValue = (price / 1000000).toFixed(2)
+      return `${parseFloat(mValue).toLocaleString('en-US')}M`
+    } else if (price >= 1000) {
       const kValue = (price / 1000).toFixed(0)
-      return `${parseInt(kValue).toLocaleString('en-US')}k`
+      return `${parseInt(kValue).toLocaleString('en-US')}K`
     }
     return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
   }
