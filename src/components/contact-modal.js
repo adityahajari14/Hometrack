@@ -41,7 +41,7 @@ export default function ContactModal({ isOpen, onClose }) {
     try {
       // Create FormData and append Web3Forms access key
       const formDataToSend = new FormData(e.target);
-      formDataToSend.append("access_key", "33ded777-8c16-4d6b-a904-1a586ffe112c");
+      formDataToSend.append("access_key", "553b3d69-1e10-49a1-9de1-2d4e0160ac97");
 
       // Submit to Web3Forms API
       const response = await fetch("https://api.web3forms.com/submit", {

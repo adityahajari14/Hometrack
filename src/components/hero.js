@@ -44,7 +44,7 @@ export default function Hero({ scrollY }) {
 
     try {
       const formDataToSend = new FormData(e.target);
-      formDataToSend.append("access_key", "afcfd4f4-1af7-49f1-b6bf-18d209736383");
+      formDataToSend.append("access_key", "553b3d69-1e10-49a1-9de1-2d4e0160ac97");
       formDataToSend.append("service", "General Consultation");
 
       const response = await fetch("https://api.web3forms.com/submit", {

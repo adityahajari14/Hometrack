@@ -20,7 +20,7 @@ export default function ContactCard() {
 
     try {
       const formDataToSend = new FormData(e.target);
-      formDataToSend.append("access_key", "402b6abc-3fe1-4a11-a3dc-7bd9b7cba865");
+      formDataToSend.append("access_key", "553b3d69-1e10-49a1-9de1-2d4e0160ac97");
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
