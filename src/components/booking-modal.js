@@ -40,7 +40,7 @@ export default function BookingModal({ isOpen, onClose, serviceName }) {
 
     try {
       const formDataToSend = new FormData(e.target);
-      formDataToSend.append("access_key", "553b3d69-1e10-49a1-9de1-2d4e0160ac97");
+      formDataToSend.append("access_key", "92607a42-97c8-4fed-b90e-4304a34f48eb");
       formDataToSend.append("service", serviceName || "Consultation");
 
       const response = await fetch("https://api.web3forms.com/submit", {
