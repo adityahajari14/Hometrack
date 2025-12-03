@@ -41,7 +41,7 @@ export default function ContactModal({ isOpen, onClose }) {
     try {
       // Create FormData and append Web3Forms access key
       const formDataToSend = new FormData(e.target);
-      formDataToSend.append("access_key", "553b3d69-1e10-49a1-9de1-2d4e0160ac97");
+      formDataToSend.append("access_key", "553b3d69-1e10-49a1-9de1-2d4e0160ac97".trim());
 
       // Submit to Web3Forms API
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -65,7 +65,7 @@ export default function ContactModal({ isOpen, onClose }) {
       } else {
         // Handle error
         console.error("Form submission error:", data);
-        alert("Failed to send message. Please try again.");
+        alert(data.message || "Failed to send message. Please try again.");
       }
     } catch (error) {
       console.error("Form submission error:", error);

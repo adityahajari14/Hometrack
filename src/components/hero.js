@@ -44,7 +44,7 @@ export default function Hero({ scrollY }) {
 
     try {
       const formDataToSend = new FormData(e.target);
-      formDataToSend.append("access_key", "553b3d69-1e10-49a1-9de1-2d4e0160ac97");
+      formDataToSend.append("access_key", "553b3d69-1e10-49a1-9de1-2d4e0160ac97".trim());
       formDataToSend.append("service", "General Consultation");
 
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -64,7 +64,7 @@ export default function Hero({ scrollY }) {
         });
       } else {
         console.error("Form submission error:", data);
-        alert("Failed to book consultation. Please try again.");
+        alert(data.message || "Failed to book consultation. Please try again.");
       }
     } catch (error) {
       console.error("Form submission error:", error);

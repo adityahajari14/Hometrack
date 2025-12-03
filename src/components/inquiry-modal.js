@@ -47,7 +47,7 @@ export default function InquiryModal({ isOpen, onClose, propertyId, propertyTitl
     try {
       // Create FormData and append Web3Forms access key
       const formDataToSend = new FormData(e.target)
-      formDataToSend.append('access_key', '553b3d69-1e10-49a1-9de1-2d4e0160ac97')
+      formDataToSend.append('access_key', '553b3d69-1e10-49a1-9de1-2d4e0160ac97'.trim())
       formDataToSend.append('property', propertyTitle)
 
       // Submit to Web3Forms API
@@ -66,6 +66,7 @@ export default function InquiryModal({ isOpen, onClose, propertyId, propertyTitl
           setSubmitStatus(null)
         }, 2000)
       } else {
+        console.error("Form submission error:", data);
         setSubmitStatus('error')
       }
     } catch (error) {
